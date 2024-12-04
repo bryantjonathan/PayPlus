@@ -52,4 +52,4 @@ PayPlus adalah aplikasi web dompet digital (**e-wallet**) yang dirancang untuk m
 
 ## 🔗 Website Link
 
-Access web disini: [PayPlus](https://faustaakbar.github.io/KonversiBinerDesimal/)
+Access web disini: [PayPlus](https://faustaakbar.github.io/PayPlus/)
