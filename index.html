@@ -4,246 +4,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayPlus</title>
+    <title>FinanceTracker - Simplify Your Financial Life</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .dropdown {
-            display: none;
-        }
-
-        .dropdown.show {
-            display: block;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="bg-gray-50">
-    <div class="min-h-screen flex flex-col">
-        <header class="bg-white shadow-sm sticky top-0 z-10">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center py-4">
-                    <div class="flex items-center">
-                        <span class="text-xl font-semibold text-indigo-600">PayPlus</span>
+<body class="bg-white text-gray-800">
+    <header class="fixed w-full bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-semibold gradient-text">
+                    PayPlus
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-indigo-500 transition duration-300">Features</a>
+
+                    <a href="#" class="text-gray-600 hover:text-indigo-500 transition duration-300">About</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-500 transition duration-300">Contact</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="DasboardPage/DasboardPage.html"
+                        class="bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition duration-300">Log
+                        in</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle"
+                        class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600">
+                        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero pt-32 pb-20 px-6">
+            <div class="container mx-auto flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-16 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        Simplify Your <span class="gradient-text">Financial Life</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-600 leading-relaxed">
+                        PayPlus helps you manage money, track expenses, and achieve your financial goals with
+                        ease and precision.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="./DasboardPage/DasboardPage.html"
+                            class="bg-indigo-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-600 transition duration-300 text-center"
+                            id="cta-button">
+                            Get Started
+                        </a>
+                        <a href="#"
+                            class="border border-indigo-500 text-indigo-500 font-semibold px-8 py-3 rounded-full hover:bg-indigo-50 transition duration-300 text-center">
+                            Learn more
+                        </a>
                     </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="relative">
-                            <img id="profilePhoto" src="https://i.pravatar.cc/40?img=68" alt="Profile"
-                                class="w-10 h-10 rounded-full border-2 border-indigo-500 cursor-pointer">
-                            <div
-                                class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white">
+                    <div class="mt-8 flex items-center space-x-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                                src="https://i.pravatar.cc/40?img=1" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                                src="https://i.pravatar.cc/40?img=2" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                                src="https://i.pravatar.cc/40?img=3" alt="User">
+                        </div>
+                        <p class="text-sm text-gray-600">Joined by 10,000+ users</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="ImageDasboard.png" alt="Finance Dashboard" class="rounded-lg shadow-2xl animate-float">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Why Choose PayPlus?</h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="text-center">
+                        <div
+                            class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Smart Budgeting</h3>
+                        <p class="text-gray-600">Set and track budgets with AI-powered recommendations.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Expense Tracking</h3>
+                        <p class="text-gray-600">Automatically categorize and analyze your spending habits.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Goal Setting</h3>
+                        <p class="text-gray-600">Set financial goals and track your progress over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-semibold text-center text-gray-800 mb-16">What Our Users Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <p class="text-gray-600 mb-4">"FinanceTracker has completely changed how I manage my money. It's
+                            intuitive, powerful, and actually makes budgeting enjoyable!"</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/60?img=1" alt="User" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Andy Sanjaya</h4>
+                                <p class="text-gray-600">Gold Member User</p>
                             </div>
-                            <div id="profileDropdown"
-                                class="dropdown absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10">
-                                <div class="px-4 py-2 border-b">
-                                    <p class="text-sm font-medium text-gray-900">Fausta Akbar</p>
-                                    <p class="text-xs text-gray-500">Account #: 1234567890</p>
-                                    <p class="text-xs font-medium text-yellow-500">Gold Member</p>
-                                </div>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account
-                                    Settings</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <p class="text-gray-600 mb-4">"I've tried many finance apps, but FinanceTracker stands out with
+                            its AI-powered insights. It's like having a personal financial advisor!"</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/60?img=2" alt="User" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800">Melisa Ulya</h4>
+                                <p class="text-gray-600">Silver Member User</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-
-        <main class="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold mb-8 text-gray-800">Welcome back, Akbar!</h1>
-
-
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-                <div
-                    class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
-                        <i data-feather="dollar-sign"></i>
-                    </div>
-                    <div>
-                        <p class="mb-2 text-sm font-medium text-gray-600">Total Savings</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp 15,000.00</p>
-                    </div>
-                </div>
-                <div
-                    class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
-                        <i data-feather="trending-up"></i>
-                    </div>
-                    <div>
-                        <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp 4,000.00</p>
-                    </div>
-                </div>
-                <div
-                    class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full">
-                        <i data-feather="trending-down"></i>
-                    </div>
-                    <div>
-                        <p class="mb-2 text-sm font-medium text-gray-600">Total Expenses</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp 2,500.00</p>
-                    </div>
-                </div>
-                <div
-                    class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="p-3 mr-4 text-yellow-500 bg-yellow-100 rounded-full">
-                        <i data-feather="credit-card"></i>
-                    </div>
-                    <div>
-                        <p class="mb-2 text-sm font-medium text-gray-600">Pending Bills</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp 1,330.00</p>
-                    </div>
-                </div>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 flex flex-wrap justify-between items-center">
+            <div class="w-full md:w-auto text-center md:text-left mb-4 md:mb-0">
+                <span class="text-2xl font-semibold">PayPlus</span>
+                <p class="mt-2 text-sm text-gray-400">&copy; 2024 PayPlus. All rights reserved.</p>
             </div>
-
-            <div class="grid gap-6 mb-8 md:grid-cols-2">
-                <a href="IncomePage/IncomePage.html"
-                    class="block p-6 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-semibold text-gray-700">Income Records</h2>
-                        <i data-feather="chevron-right" class="text-gray-500"></i>
-                    </div>
-                    <p class="text-gray-600">View detailed income history and analytics</p>
-                </a>
-                <a href="#"
-                    class="block p-6 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-semibold text-gray-700">Expense Records</h2>
-                        <i data-feather="chevron-right" class="text-gray-500"></i>
-                    </div>
-                    <p class="text-gray-600">Track your spending patterns and categories</p>
-                </a>
+            <div class="flex justify-center md:justify-end space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
             </div>
-
-            <div class="grid gap-6 mb-8 md:grid-cols-2">
-                <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4">Upcoming Bills</h2>
-                    <ul class="space-y-3">
-                        <li class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                <i data-feather="home" class="mr-3 text-gray-500"></i>
-                                <span class="text-gray-700">Rent</span>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-gray-700 font-semibold">Rp 1,200.00</p>
-                                <p class="text-sm text-gray-500">Due on Jul 1, 2023</p>
-                            </div>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                <i data-feather="zap" class="mr-3 text-gray-500"></i>
-                                <span class="text-gray-700">Electricity</span>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-gray-700 font-semibold">Rp 80.00</p>
-                                <p class="text-sm text-gray-500">Due on Jul 15, 2023</p>
-                            </div>
-                        </li>
-                        <li class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                <i data-feather="wifi" class="mr-3 text-gray-500"></i>
-                                <span class="text-gray-700">Internet</span>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-gray-700 font-semibold">Rp 50.00</p>
-                                <p class="text-sm text-gray-500">Due on Jul 20, 2023</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4">Savings Goals</h2>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-700">Emergency Fund</span>
-                                <span class="text-gray-600">Rp 5,000 / Rp 10,000</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-green-600 h-2.5 rounded-full" style="width: 50%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-700">Vacation</span>
-                                <span class="text-gray-600">Rp 2,000 / Rp 5,000</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 40%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
-                <h2 class="text-xl font-semibold text-gray-700 mb-4">Recent Transfers</h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Date</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    From</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    To</th>
-                                <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-28</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Checking</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Savings</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">Rp 500.00
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-25</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Savings</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Investment</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">Rp 1,000.00
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-20</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Checking</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Bills</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">Rp 300.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </div>
+        </div>
+    </footer>
     <script>
-        feather.replace()
-        // Profile dropdown functionality
-        const profilePhoto = document.getElementById('profilePhoto');
-        const profileDropdown = document.getElementById('profileDropdown');
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.querySelector('.md\\:flex');
 
-        profilePhoto.addEventListener('click', function (event) {
-            event.stopPropagation();
-            profileDropdown.classList.toggle('show');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function (event) {
-            if (!profileDropdown.contains(event.target) && event.target !== profilePhoto) {
-                profileDropdown.classList.remove('show');
+        // CTA button animation
+        const ctaButton = document.getElementById('cta-button');
+
+        ctaButton.addEventListener('mouseover', () => {
+            ctaButton.classList.add('scale-105');
+        });
+
+        ctaButton.addEventListener('mouseout', () => {
+            ctaButton.classList.remove('scale-105');
+        });
+
+        // Scroll animation for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
             }
         });
     </script>

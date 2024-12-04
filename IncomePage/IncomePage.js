@@ -32,7 +32,6 @@ const mockIncomeData = [
         sender: 'Putri Andini',
         type: 'gift',
         message: 'Happy birthday kamuuu!',
-        
     },
     ,
     {

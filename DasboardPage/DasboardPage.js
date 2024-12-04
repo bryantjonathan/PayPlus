@@ -65,6 +65,9 @@ function createProgressBar(current, target) {
 }
 
 // Initialize dashboard
+// Keep all existing mock data and functions at the top
+
+// Single DOMContentLoaded event handler
 document.addEventListener('DOMContentLoaded', function() {
     // Set total savings
     document.getElementById('totalSavings').textContent = formatCurrency(mockData.totalSavings);
@@ -112,10 +115,24 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         transferList.appendChild(tr);
     });
+    // Initialize Feather icons first
+    feather.replace();
+    
+    const profilePhoto = document.getElementById('profilePhoto');
+    const profileDropdown = document.getElementById('profileDropdown');
 
-    // Logout functionality
-    document.getElementById('logoutBtn').addEventListener('click', function() {
-        alert('Logout functionality would be implemented here');
-    });
+    if (profilePhoto && profileDropdown) {
+        profilePhoto.addEventListener('click', function(event) {
+            event.stopPropagation();
+            profileDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!profileDropdown.contains(event.target) && event.target !== profilePhoto) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+    }
 });
+
 
