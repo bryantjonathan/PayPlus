@@ -1,5 +1,7 @@
 # PayPlus
 
+![Tampilan Website](Ui.png)
+
 PayPlus adalah aplikasi web dompet digital (**e-wallet**) yang dirancang untuk membantu pengguna mengelola keuangan mereka secara efektif dan terorganisir. Dengan berbagai fitur manajemen keuangan, PayPlus memberikan pengalaman pengguna yang lengkap, intuitif, dan fleksibel.
 
 ---
@@ -52,4 +54,4 @@ PayPlus adalah aplikasi web dompet digital (**e-wallet**) yang dirancang untuk m
 
 ## 🔗 Website Link
 
-Access web disini: [PayPlus](https://faustaakbar.github.io/PayPlus/)
+Akses web disini: [PayPlus](https://faustaakbar.github.io/PayPlus/)
