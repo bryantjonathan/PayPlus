@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Overview - PayPlus</title>
+    <title>Expense Overview - PayPlus</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="IncomePage.css">
+    <link rel="stylesheet" href="ExpensePage.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 
 <body class="bg-gray-50">
@@ -24,8 +23,8 @@
                 <nav class="hidden sm:flex space-x-4">
                     <a href="../DasboardPage/DasboardPage.html"
                         class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                    <a href="../ExpensePage/ExpensePage.html"
-                        class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                    <a href="../IncomePage/IncomePage.html"
+                        class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
                     <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
                 </nav>
                 <div class="sm:hidden">
@@ -53,49 +52,50 @@
     </header>
 
     <main class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold mb-8 text-gray-800">Income Overview</h1>
+        <h1 class="text-3xl font-bold mb-8 text-gray-800">Expense Overview</h1>
 
         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
-                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2-2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                            clip-rule="evenodd"></path>
+                <div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="1 1 22 22">
+                        <path fill-rule="evenodd" d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M2 11a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7Zm7.5 1a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z" clip-rule="evenodd"/>
+                        <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/>
                     </svg>
                 </div>
                 <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                    <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Total Expenses</p>
+                    <p id="totalExpense" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                </div>
+            </div>
+            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
+                <div class="p-3 mr-4 text-yellow-500 bg-yellow-100 rounded-full">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 2 23 20">
+                        <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Shopping</p>
+                    <p id="shoppingExpense" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
                 <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
-                        </path>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 23">
+                        <path d="M5.617 2.076a1 1 0 0 1 1.09.217L8 3.586l1.293-1.293a1 1 0 0 1 1.414 0L12 
+                        3.586l1.293-1.293a1 1 0 0 1 1.414 0L16 3.586l1.293-1.293A1 1 0 0 1 19 3v18a1 1 0 0 
+                        1-1.707.707L16 20.414l-1.293 1.293a1 1 0 0 1-1.414 0L12 20.414l-1.293 1.293a1 1 0 0 
+                        1-1.414 0L8 20.414l-1.293 1.293A1 1 0 0 1 5 21V3a1 1 0 0 1 .617-.924ZM9 7a1 1 0 0 0 0 
+                        2h6a1 1 0 1 0 0-2H9Zm0 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Zm0 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H9Z"></path>
                     </svg>
                 </div>
                 <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600">Total Transactions</p>
-                    <p id="totalTransactions" class="text-lg font-semibold text-gray-700">0</p>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Bills</p>
+                    <p id="billExpense" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
-                <div class="p-3 mr-4 text-purple-500 bg-purple-100 rounded-full">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                        <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                    </svg>
-                </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600">Normal Income</p>
-                    <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
-                </div>
-            </div>
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
-                <div class="p-3 mr-4 text-pink-500 bg-pink-100 rounded-full">
+                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
@@ -104,16 +104,16 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600">Gift Income</p>
-                    <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Donations</p>
+                    <p id="donationExpense" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
                 </div>
             </div>
         </div>
 
         <div class="mb-8 bg-white rounded-lg shadow-xs p-4 flex flex-col items-center">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">Income Distribution</h2>
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Expense Distribution</h2>
             <div style="width: 300px; height: 150px;">
-                <canvas id="incomeChart"></canvas>
+                <canvas id="expenseChart"></canvas>
             </div>
         </div>
 
@@ -122,19 +122,20 @@
             <div class="space-x-2">
                 <button id="allFilter"
                     class="filter-btn bg-blue-500 text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-600">All</button>
-                <button id="normalFilter"
-                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Normal</button>
-                <button id="giftFilter"
-                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Gift</button>
+                <button id="shoppingFilter"
+                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Shopping</button>
+                <button id="billFilter"
+                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Bills</button>
+                <button id="donationFilter"
+                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Donations</button>
             </div>
         </div>
 
-        <div id="incomeCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <!-- Income cards will be dynamically inserted here -->
+        <div id="expenseCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Expense cards will be dynamically inserted here -->
         </div>
     </main>
-    <script src="IncomePage.js"></script>
-
+    <script src="ExpensePage.js"></script>
 </body>
 
 </html>
