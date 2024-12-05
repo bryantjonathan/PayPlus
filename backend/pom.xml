@@ -30,7 +30,12 @@
             <artifactId>spring-boot-starter-validation</artifactId>
             <version>3.1.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version> <!-- Gunakan versi yang sesuai dengan server Anda -->
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 
