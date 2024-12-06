@@ -21,7 +21,7 @@
         <div class="flex flex-col flex-1 items-center justify-center p-8">
             <div class="w-full max-w-md">
                 <div class="text-center mb-6">
-                    <img src="../logo.png" alt="PayPlus Logo" class="mx-auto">
+                    <img src="logo.png" alt="PayPlus Logo" class="mx-auto">
                     <h2 class="text-2xl font-bold text-indigo-600 mt-4">Create Your Account</h2>
                 </div>
                 <form action="dashboard.html" method="POST" class="space-y-4">
