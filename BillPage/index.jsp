@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,8 +133,10 @@
             </div>
         </main>
     </div>
-
+    <div id="notification" class="hidden fixed bottom-4 right-4 py-2 px-4 rounded-lg shadow-lg text-white bg-indigo-600"></div>
+    <div class="notification-container" id="notificationContainer"></div>
     <script src="Bill_Page.js"></script>
 </body>
 
 </html>
+
