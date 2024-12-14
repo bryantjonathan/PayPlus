@@ -13,7 +13,7 @@ public class IncomeRecord {
         this.tanggal = tanggal;
         this.pengirim = pengirim;
         this.jenisPemasukan = jenisPemasukan;
-        this.pesan = null; // Default null for normal income
+        this.pesan = null; 
     }
 
     public IncomeRecord(double nominalUang, Date tanggal, String pengirim, String jenisPemasukan, String pesan) {
