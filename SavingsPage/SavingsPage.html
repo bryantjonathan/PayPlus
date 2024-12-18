@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Page</title>
+    <link rel="icon" href="../logoTab.png" type="image/icon type">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../SavingsPage/SavingsPage.js">
+    </script>
+</head>
+
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../DasboardPage/DasboardPage.html">
+                        <img id="logo" src="../logo.png">
+                    </a>
+                </div>
+                <nav class="hidden sm:flex space-x-4">
+                    <a href="../DasboardPage/DasboardPage.html"
+                        class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
+                    <a href="../IncomePage/IncomePage.html"
+                        class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
+                    <a href="../ExpensePage/ExpensePage.html"
+                        class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                    <a href="#"
+                        class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold mb-8 text-gray-800">Savings Page</h1>
+
+        <!-- Summary -->
+        <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+            <div class="flex items-center p-4 bg-white rounded-lg shadow">
+                <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.211 6.339A8 8 0 1 1 6.339 2.789a4.5 4.5 0 1 0 10.872 3.55Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Total Savings Target</p>
+                    <p id="totalSavings" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                </div>
+            </div>
+            <div class="flex items-center p-4 bg-white rounded-lg shadow">
+                <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.211 6.339A8 8 0 1 1 6.339 2.789a4.5 4.5 0 1 0 10.872 3.55Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="mb-2 text-sm font-medium text-gray-600">Savings Collected</p>
+                    <p id="savingsCollected" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Savings Button -->
+        <button id="addSavingsButton" class="mb-4 bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">
+            Add Savings
+        </button>
+
+        <!-- Add Savings Form -->
+        <form id="savingsForm" class="bg-white p-4 rounded-lg shadow mb-8 hidden">
+            <div class="mb-4">
+                <label for="savingsTitle" class="block text-sm font-medium text-gray-700">Title</label>
+                <input type="text" id="savingsTitle" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <div class="mb-4">
+                <label for="savingsDescription" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea id="savingsDescription" rows="3"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="savingsTarget" class="block text-sm font-medium text-gray-700">Target Amount</label>
+                <input type="number" id="savingsTarget" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <div class="mb-4">
+                <label for="savingsCollectedInput" class="block text-sm font-medium text-gray-700">Amount
+                    Collected</label>
+                <input type="number" id="savingsCollectedInput"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+            <button type="submit"
+                class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600">Save</button>
+        </form>
+
+        <!-- Savings List -->
+        <div id="savingsContainer" class="grid gap-4"></div>
+    </main>
+</body>
+
+</html>

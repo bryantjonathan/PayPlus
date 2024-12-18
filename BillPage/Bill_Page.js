@@ -89,4 +89,66 @@ document.addEventListener('DOMContentLoaded', () => {
             billItem.remove();
         }
     });
+    
+    // Create the notification container
+    const notificationContainer = document.createElement('div');
+    notificationContainer.className = 'notification-container';
+    document.body.appendChild(notificationContainer);
+
+    // Function to show styled notifications
+    const showNotification = (type, title, message) => {
+    const notification = document.createElement('div');
+    notification.className = `notification-card ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <h4>${title}</h4>
+            <p>${message}</p>
+        </div>
+        <button onclick="this.parentElement.remove()">×</button>`;
+    notificationContainer.appendChild(notification);
+
+    // Auto-hide notification after 5 seconds
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateY(20px)';
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+    };
+
+    // Function to check reminders for bills
+    const checkAllReminders = () => {
+    const billItems = document.querySelectorAll('.bill-item');
+    const now = new Date();
+
+    billItems.forEach((billItem) => {
+        const dueDateText = billItem.querySelector('.due-date').textContent.replace('Due on ', '');
+        const dueDate = new Date(dueDateText);
+
+        const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+
+        // Menampilkan notifikasi untuk tagihan yang hampir jatuh tempo atau overdue
+        const billName = billItem.querySelector('.text-gray-700').textContent;
+
+        if (diffInDays <= 2 && diffInDays >= 0) {
+            // Reminder untuk tagihan yang hampir jatuh tempo
+            showNotification('reminder', 'Reminder', `Your bill for "${billName}" is due in ${diffInDays} day(s)!`);
+        } else if (diffInDays < 0) {
+            // Overdue untuk tagihan yang lewat jatuh tempo
+            showNotification('overdue', 'Overdue', `Your bill for "${billName}" was due ${Math.abs(diffInDays)} day(s) ago!`);
+
+            // Menandai tagihan yang overdue dengan kelas 'overdue' dan merubah warna nama bill
+            billItem.classList.add('overdue');
+        } else {
+            // Hapus kelas 'overdue' jika tagihan sudah tidak overdue
+            billItem.classList.remove('overdue');
+        }
+    });
+    };
+
+    // Interval to check reminders every minute
+    setInterval(checkAllReminders, 60000);
+
+    // Run reminder check once on page load
+    checkAllReminders();
+
 });

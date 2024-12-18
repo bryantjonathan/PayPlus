@@ -1,3 +1,4 @@
+<!-- <%@page contentType="text/html" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +8,7 @@
     <title>BillPage - PayPlus</title>
     <link rel="stylesheet" href="Bill_Page.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../logoTab.png" type="image/icon type">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -17,7 +19,7 @@
                 <div class="flex justify-between items-center py-4">
                     <div class="flex items-center">
                         <a href="DashboardPage.html" class="text-xl font-semibold text-indigo-600 hover:underline">
-                            PayPlus
+                            <img src="../logo.png">
                         </a>
                     </div>
                     <div class="flex items-center space-x-4">
@@ -132,8 +134,10 @@
             </div>
         </main>
     </div>
-
+    <div id="notification" class="hidden fixed bottom-4 right-4 py-2 px-4 rounded-lg shadow-lg text-white bg-indigo-600"></div>
+    <div class="notification-container" id="notificationContainer"></div>
     <script src="Bill_Page.js"></script>
 </body>
 
 </html>
+
