@@ -25,7 +25,7 @@ public abstract class Model<E> {
     private String otherQuery = "";
 
     private void connect() {
-        String db_name = "exercise";
+        String db_name = "payplus";
         String username = "root";
         String password = "";
         try {
