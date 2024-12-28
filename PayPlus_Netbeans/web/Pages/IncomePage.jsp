@@ -37,8 +37,8 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="../DasboardPage/DasboardPage.html">
-                        <img id="logo" src="../logo.png">
+                    <a href="Pages/DashboardPage.jsp">
+                        <img id="logo" src="Images/logo.png">
                     </a>
                 </div>
                 <nav class="hidden sm:flex space-x-4">
@@ -73,6 +73,10 @@
     </header>
 
     <main class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <%
+                        ArrayList<ArrayList<Object>> dataIncome = (ArrayList<ArrayList<Object>>)request.getAttribute("listDataIncome");
+                        ArrayList<Object> p = dataIncome.get(0);
+        %>
         <h1 class="text-3xl font-bold mb-8 text-gray-800">Income Overview</h1>
 
         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -86,7 +90,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                    <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                    <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp <%=p.get(1)%></p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -99,7 +103,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Total Transactions</p>
-                    <p id="totalTransactions" class="text-lg font-semibold text-gray-700">0</p>
+                    <p id="totalTransactions" class="text-lg font-semibold text-gray-700"><%=p.get(0)%></p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -111,7 +115,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Normal Income</p>
-                    <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                    <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp <%=p.get(3)%></p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -125,7 +129,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Gift Income</p>
-                    <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                    <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp <%=p.get(2)%></p>
                 </div>
             </div>
         </div>
@@ -140,13 +144,14 @@
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-semibold text-gray-800">Recent Transactions</h2>
             <div class="space-x-2">
-                <button id="allFilter"
-                    class="filter-btn bg-blue-500 text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-600">All</button>
-                <button id="normalFilter"
-                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Normal</button>
-                <button id="giftFilter"
-                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Gift</button>
+                <a href="IncomePage.jsp?filter=all" id="allFilter"
+                    class="filter-btn bg-blue-500 text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-600">All</a>
+                <a href="IncomePage.jsp?filter=normal" id="normalFilter"
+                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Normal</a>
+                <a href="IncomePage.jsp?filter=gift" id="giftFilter"
+                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Gift</a>
             </div>
+
         </div>
 <div id="incomeCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <% 
@@ -157,7 +162,7 @@
     <div class="bg-white shadow rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg income-card">
         <div class="p-6">
             <div class="flex justify-between items-center mb-4">
-                <span class="text-2xl font-bold text-gray-800">Rp. <%= income.getAmount() %></span>
+                <span class="text-2xl font-bold text-gray-800">Rp.<%= income.getJumlah()%></span>
                 <span class="text-sm font-medium text-gray-500"><%= income.getDate() %></span>
             </div>
             <div class="space-y-2">
@@ -188,4 +193,56 @@
 
     </main>
 </body>
+<%
+    // Data untuk grafik
+    int normalIncome = 0;
+    int giftIncome = 0;
+
+    if (incomes != null) {
+        for (IncomeRecord income : incomes) {
+            if ("normal".equalsIgnoreCase(income.getType())) {
+                normalIncome += income.getJumlah();
+            } else if ("gift".equalsIgnoreCase(income.getType())) {
+                giftIncome += income.getJumlah();
+            }
+        }
+    }
+%>
+ <script>
+        function updateIncomeChart(normalIncome, giftIncome) {
+            const ctx = document.getElementById('incomeChart').getContext('2d');
+
+            if (window.incomeChart instanceof Chart) {
+                window.incomeChart.destroy();
+            }
+
+            window.incomeChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Normal Income', 'Gift Income'],
+                    datasets: [{
+                        data: [normalIncome, giftIncome],
+                        backgroundColor: ['#3B82F6', '#8B5CF6'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Panggil fungsi updateIncomeChart dengan nilai dari backend
+        updateIncomeChart(<%= normalIncome %>, <%= giftIncome %>);
+    </script>
 </html>
