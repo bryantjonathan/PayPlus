@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/src/java/models/Model.java</file>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/web/Pages/IncomePage.jsp</file>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/web/index.jsp</file>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/src/java/models/Account.java</file>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/src/java/models/ExpenseRecord.java</file>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/src/java/controllers/ProductController.java</file>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/src/java/controllers/IncomeController.java</file>
-            <file>file:/D:/My%20Remote/Git%20Hub/pay_plus/PayPlus_Netbeans/src/java/models/IncomeRecord.java</file>
+            <file>file:/C:/Users/iania/OneDrive/Documents/PayPlus/PayPlus_Netbeans/src/java/models/IncomeRecord.java</file>
+            <file>file:/C:/Users/iania/OneDrive/Documents/PayPlus/PayPlus_Netbeans/src/java/controllers/ExpenseController.java</file>
+            <file>file:/C:/Users/iania/OneDrive/Documents/PayPlus/PayPlus_Netbeans/src/java/models/ExpenseRecord.java</file>
+            <file>file:/C:/Users/iania/OneDrive/Documents/PayPlus/PayPlus_Netbeans/web/Pages/ExpensePage.jsp</file>
+            <file>file:/C:/Users/iania/OneDrive/Documents/PayPlus/PayPlus_Netbeans/web/Pages/IncomePage.jsp</file>
         </group>
     </open-files>
 </project-private>

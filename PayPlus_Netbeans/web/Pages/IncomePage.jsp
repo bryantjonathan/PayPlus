@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Income Overview - PayPlus</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="../logoTab.png" type="image/icon type">
+    <link rel="icon" href="<%= request.getContextPath() %>/logoTab.png" type="image/icon">
     <link rel="stylesheet" href="IncomePage.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -37,14 +37,14 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="../DasboardPage/DasboardPage.html">
-                        <img id="logo" src="../logo.png">
+                    <a href="../Pages/DashboardPage./jsp">
+                        <img id="logo" src="Images\logo.png">
                     </a>
                 </div>
                 <nav class="hidden sm:flex space-x-4">
-                    <a href="../DasboardPage/DasboardPage.html"
+                    <a href="/Pages/DashboardPage.jsp"
                         class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                    <a href="../ExpensePage/ExpensePage.html"
+                    <a href="Expense"
                         class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
                     <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
                 </nav>
