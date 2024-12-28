@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class IncomeRecord extends Model<IncomeRecord> {
     private int id;
-    private double amount;
+    private int amount;
     private String sender;
     private String type;
     private String date;
@@ -15,7 +15,7 @@ public class IncomeRecord extends Model<IncomeRecord> {
         this.primaryKey = "id";
     }
 
-    public IncomeRecord (int id, double amount, String sender, String type, String date, String message) {
+    public IncomeRecord (int id, int amount, String sender, String type, String date, String message) {
         this();
         this.id = id;
         this.amount = amount;
@@ -30,7 +30,7 @@ public class IncomeRecord extends Model<IncomeRecord> {
         try {
             return new IncomeRecord(
                 rs.getInt("id"),
-                rs.getDouble("amount"),
+                rs.getInt("amount"),
                 rs.getString("sender"),
                 rs.getString("type"),
                 rs.getString("date"),
@@ -55,11 +55,11 @@ public class IncomeRecord extends Model<IncomeRecord> {
         this.id = id;
     }
 
-    public double getAmount() {
+    public int getJumlah() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
