@@ -89,7 +89,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Expense</p>
-                        <p id="totalExpense" class="text-lg font-semibold text-gray-700">Rp <%= p.get(0) %></p>
+                        <p id="totalExpense" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(0) %></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -117,7 +117,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Normal Expense</p>
-                        <p id="normalExpense" class="text-lg font-semibold text-gray-700">Rp <%= p.get(2) %></p>
+                        <p id="normalExpense" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(2) %></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -131,7 +131,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Gift Expense</p>
-                        <p id="giftExpense" class="text-lg font-semibold text-gray-700">Rp <%= p.get(3) %></p>
+                        <p id="giftExpense" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(3) %></p>
                     </div>
                 </div>
             </div>
@@ -152,9 +152,9 @@
                         class="filter-btn <%= "normal".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Normal</a>
                     <a href="Expense?filter=gift" id="giftFilter"
                         class="filter-btn <%= "gift".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Gift</a>
-</div>
-
+                </div>
             </div>
+                
             <div id="expenseCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <% 
                 ArrayList<ExpenseRecord> expenses = (ArrayList<ExpenseRecord>) request.getAttribute("expenseList");

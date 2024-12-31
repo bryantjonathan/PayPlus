@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Income Overview - PayPlus</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="<%= request.getContextPath() %>/logoTab.png" type="image/icon">
+    <link rel="icon" href="Images\logoTab.png" type="image/icon">
     <link rel="stylesheet" href="IncomePage.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
