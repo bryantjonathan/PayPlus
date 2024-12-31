@@ -14,7 +14,7 @@
     <title>PayPlus</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="<%= request.getContextPath() %>/logoTab.png" type="image/icon">
+    <link rel="icon" href="../Images/logoTab.png" type="image/icon">
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="DasboardPage.css">
 </head>

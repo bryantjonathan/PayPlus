@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Expense Overview - PayPlus</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="icon" href="<%= request.getContextPath() %>/logoTab.png" type="image/icon">
+        <link rel="icon" href="Images\logoTab.png" type="image/icon">
         <link rel="stylesheet" href="ExpensePage.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>
@@ -43,7 +43,7 @@
                     <nav class="hidden sm:flex space-x-4">
                         <a href="Pages/DashboardPage.jsp"
                             class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                        <a href="Pages"
+                        <a href="Income"
                             class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
                         <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
                     </nav>
@@ -72,6 +72,10 @@
         </header>
 
         <main class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+            <%
+                        ArrayList<ArrayList<Object>> dataExpense = (ArrayList<ArrayList<Object>>)request.getAttribute("dataExpense");
+                        ArrayList<Object> p = dataExpense.get(0);
+            %>
             <h1 class="text-3xl font-bold mb-8 text-gray-800">Expense Overview</h1>
 
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -85,7 +89,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Expense</p>
-                        <p id="totalExpense" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                        <p id="totalExpense" class="text-lg font-semibold text-gray-700">Rp <%= p.get(0) %></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -98,7 +102,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Transactions</p>
-                        <p id="totalTransactions" class="text-lg font-semibold text-gray-700">0</p>
+                        <p id="totalTransactions" class="text-lg font-semibold text-gray-700"><%= p.get(1) %></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -113,7 +117,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Normal Expense</p>
-                        <p id="normalExpense" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                        <p id="normalExpense" class="text-lg font-semibold text-gray-700">Rp <%= p.get(2) %></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -127,7 +131,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Gift Expense</p>
-                        <p id="giftExpense" class="text-lg font-semibold text-gray-700">Rp 0.00</p>
+                        <p id="giftExpense" class="text-lg font-semibold text-gray-700">Rp <%= p.get(3) %></p>
                     </div>
                 </div>
             </div>
@@ -142,20 +146,20 @@
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-semibold text-gray-800">Recent Transactions</h2>
                 <div class="space-x-2">
-                    <button id="allFilter"
-                        class="filter-btn bg-blue-500 text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-600">All</button>
-                    <button id="normalFilter"
-                        class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Normal</button>
-                    <button id="giftFilter"
-                        class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Gift</button>
-                </div>
+                    <a href="Expense" id="allFilter"
+                        class="filter-btn <%= request.getParameter("filter") == null ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">All</a>
+                    <a href="Expense?filter=normal" id="normalFilter"
+                        class="filter-btn <%= "normal".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Normal</a>
+                    <a href="Expense?filter=gift" id="giftFilter"
+                        class="filter-btn <%= "gift".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Gift</a>
+</div>
+
             </div>
             <div id="expenseCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <% 
                 ArrayList<ExpenseRecord> expenses = (ArrayList<ExpenseRecord>) request.getAttribute("expenseList");
                 if (expenses != null && !expenses.isEmpty()) {
-                    for (int i = expenses.size() - 1; i >= 0; i--) { 
-                    ExpenseRecord expense = expenses.get(i);
+                    for (ExpenseRecord expense : expenses) {
             %>
             <div class="bg-white shadow rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg income-card">
                 <div class="p-6">
@@ -165,7 +169,7 @@
                     </div>
                     <div class="space-y-2">
                         <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Sender:</span>
+                            <span class="text-gray-600">Receiver:</span>
                             <span class="font-medium text-gray-800"><%= expense.getReceiver() %></span>
                         </div>
                         <div class="flex justify-between text-sm">
@@ -189,4 +193,56 @@
             </div>
         </main>
     </body>
+    <%
+    // Data untuk grafik
+    int normalExpense = 0;
+    int giftExpense = 0;
+
+    if (expenses != null) {
+        for (ExpenseRecord expense : expenses) {
+            if ("normal".equalsIgnoreCase(expense.getType())) {
+                normalExpense += expense.getAmount();
+            } else if ("gift".equalsIgnoreCase(expense.getType())) {
+                giftExpense += expense.getAmount();
+            }
+        }
+    }
+    %>
+    <script>
+        function updateExpenseChart(normalExpense, giftExpense) {
+            const ctx = document.getElementById('expenseChart').getContext('2d');
+
+            if (window.expenseChart instanceof Chart) {
+                window.expenseChart.destroy();
+            }
+
+            window.expenseChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Normal Expense', 'Gift Expense'],
+                    datasets: [{
+                        data: [normalExpense, giftExpense],
+                        backgroundColor: ['#3B82F6', '#8B5CF6'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Panggil fungsi updateIncomeChart dengan nilai dari backend
+        updateExpenseChart(<%= normalExpense %>, <%= giftExpense %>);
+    </script>
 </html>
