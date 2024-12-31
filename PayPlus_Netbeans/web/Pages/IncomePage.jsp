@@ -74,7 +74,7 @@
 
     <main class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <%
-                        ArrayList<ArrayList<Object>> dataIncome = (ArrayList<ArrayList<Object>>)request.getAttribute("listDataIncome");
+                        ArrayList<ArrayList<Object>> dataIncome = (ArrayList<ArrayList<Object>>)request.getAttribute("dataIncome");
                         ArrayList<Object> p = dataIncome.get(0);
         %>
         <h1 class="text-3xl font-bold mb-8 text-gray-800">Income Overview</h1>
@@ -90,7 +90,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                    <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp <%=p.get(1)%></p>
+                    <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp. <%=p.get(0)%></p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -103,7 +103,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Total Transactions</p>
-                    <p id="totalTransactions" class="text-lg font-semibold text-gray-700"><%=p.get(0)%></p>
+                    <p id="totalTransactions" class="text-lg font-semibold text-gray-700"><%=p.get(1)%></p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -115,7 +115,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Normal Income</p>
-                    <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp <%=p.get(3)%></p>
+                    <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp. <%=p.get(3)%></p>
                 </div>
             </div>
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -129,7 +129,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600">Gift Income</p>
-                    <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp <%=p.get(2)%></p>
+                    <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp. <%=p.get(2)%></p>
                 </div>
             </div>
         </div>
@@ -144,25 +144,25 @@
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-2xl font-semibold text-gray-800">Recent Transactions</h2>
             <div class="space-x-2">
-                <a href="IncomePage.jsp?filter=all" id="allFilter"
-                    class="filter-btn bg-blue-500 text-white px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-600">All</a>
-                <a href="IncomePage.jsp?filter=normal" id="normalFilter"
-                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Normal</a>
-                <a href="IncomePage.jsp?filter=gift" id="giftFilter"
-                    class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-all duration-300 hover:bg-gray-300">Gift</a>
+                    <a href="Income" id="allFilter"
+                        class="filter-btn <%= request.getParameter("filter") == null ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">All</a>
+                    <a href="Income?filter=normal" id="normalFilter"
+                        class="filter-btn <%= "normal".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Normal</a>
+                    <a href="Income?filter=gift" id="giftFilter"
+                        class="filter-btn <%= "gift".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700" %> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Gift</a>
             </div>
 
         </div>
 <div id="incomeCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <% 
-        ArrayList<IncomeRecord> incomes = (ArrayList<IncomeRecord>) request.getAttribute("incomeList");
+        ArrayList<IncomeRecord> incomes = (ArrayList<IncomeRecord>) request.getAttribute("IncomeList");
         if (incomes != null && !incomes.isEmpty()) {
             for (IncomeRecord income : incomes) { 
     %>
     <div class="bg-white shadow rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg income-card">
         <div class="p-6">
             <div class="flex justify-between items-center mb-4">
-                <span class="text-2xl font-bold text-gray-800">Rp.<%= income.getJumlah()%></span>
+                <span class="text-2xl font-bold text-gray-800">Rp. <%= income.getJumlah()%></span>
                 <span class="text-sm font-medium text-gray-500"><%= income.getDate() %></span>
             </div>
             <div class="space-y-2">
