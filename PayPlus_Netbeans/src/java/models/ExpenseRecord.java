@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 public class ExpenseRecord extends Model<ExpenseRecord> {
     private int id;
-    private int receiverId;
     private int amount;
     private String receiver;
     private String type;
@@ -17,11 +16,10 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
         this.primaryKey = "id";
     }
 
-    public ExpenseRecord (int id, int receiverId, int amount, String receiver, String type, String date, String message) {
+    public ExpenseRecord (int id, int amount, String receiver, String type, String date, String message) {
         this.table = "expense";
         this.primaryKey = "id";
         this.id = id;
-        this.receiverId = receiverId;
         this.amount = amount;
         this.receiver = receiver;
         this.type = type;
@@ -34,7 +32,6 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
         try {
             return new ExpenseRecord(
                 rs.getInt("id"),
-                rs.getInt("receiverId"),
                 rs.getInt("amount"),
                 rs.getString("receiver"),
                 rs.getString("type"),
@@ -61,14 +58,6 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getReceiverId() {
-        return receiverId;
-    }
-
-    public void setUserId(int receiverId) {
-        this.receiverId = receiverId;
     }
 
     public int getAmount() {
