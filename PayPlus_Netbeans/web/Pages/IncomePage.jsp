@@ -37,8 +37,8 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="Pages/DashboardPage.jsp">
-                        <img id="logo" src="Images/logo.png">
+                    <a href="Dashboard">
+                        <img id="logo" src="Images\logo.png">
                     </a>
                 </div>
                 <nav class="hidden sm:flex space-x-4">
