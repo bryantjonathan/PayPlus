@@ -4,6 +4,7 @@
     Author     : fauss
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +57,14 @@
         </header>
 
         <main class="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+            <%
+                        ArrayList<ArrayList<Object>> dataExpense = (ArrayList<ArrayList<Object>>)request.getAttribute("dataExpense");
+                        ArrayList<Object> expense = dataExpense.get(0);
+                        
+                        ArrayList<ArrayList<Object>> dataIncome = (ArrayList<ArrayList<Object>>)request.getAttribute("dataIncome");
+                        ArrayList<Object> income = dataIncome.get(0);
+           
+            %>
             <h1 class="text-3xl font-bold mb-8 text-gray-800">Welcome back, Akbar!</h1>
 
 
@@ -77,7 +86,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp 4,000.00</p>
+                        <p class="text-lg font-semibold text-gray-700">Rp. <%= income.get(0)%></p>
                     </div>
                 </div>
                 <div
@@ -87,7 +96,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Expenses</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp 2,500.00</p>
+                        <p class="text-lg font-semibold text-gray-700">Rp. <%= expense.get(0)%></p>
                     </div>
                 </div>
                 <div
@@ -103,7 +112,7 @@
             </div>
 
             <div class="grid gap-6 mb-8 md:grid-cols-2">
-                <a href="../Income"
+                <a href="Income"
                     class="block p-6 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-xl font-semibold text-gray-700">Income Records</h2>
@@ -111,7 +120,7 @@
                     </div>
                     <p class="text-gray-600">View detailed income history and analytics</p>
                 </a>
-                <a href="../ExpensePage/ExpensePage.html"
+                <a href="Expense"
                     class="block p-6 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-xl font-semibold text-gray-700">Expense Records</h2>
@@ -122,6 +131,7 @@
             </div>
 
             <div class="grid gap-6 mb-8 md:grid-cols-2">
+                
                 <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
                     <h2 class="text-xl font-semibold text-gray-700 mb-4">Upcoming Bills</h2>
                     <ul class="space-y-3">

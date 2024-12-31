@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <nav class="hidden sm:flex space-x-4">
-                    <a href="/Pages/DashboardPage.jsp"
+                    <a href="Dashboard"
                         class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
                     <a href="Expense"
                         class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>

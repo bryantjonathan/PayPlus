@@ -15,7 +15,7 @@ public class IncomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String phone = "88";
+        String phone = "83824099809";
         
         ArrayList<ArrayList<Object>> dataIncome = new IncomeRecord().query(
                 "SELECT SUM(amount), "
