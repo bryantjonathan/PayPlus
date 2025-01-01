@@ -109,7 +109,7 @@
                 </div>
             </div>
 
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+            <div class="grid gap-6 mb-8 md:grid-cols-2">
                 <div
                     class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
                     <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
