@@ -1,1 +1,6 @@
 /PayPlus_Netbeans/build/
+/PayPlus_Netbeans/nbproject/private/
+nbbuild/
+dist/
+build/
+.log

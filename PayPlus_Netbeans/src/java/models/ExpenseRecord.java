@@ -6,6 +6,7 @@ import java.sql.SQLException;
 public class ExpenseRecord extends Model<ExpenseRecord> {
     private int id;
     private int amount;
+    private long phone;
     private String receiver;
     private String type;
     private String date;
@@ -16,11 +17,12 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
         this.primaryKey = "id";
     }
 
-    public ExpenseRecord (int id, int amount, String receiver, String type, String date, String message) {
+    public ExpenseRecord (int id, int amount, long phone, String receiver, String type, String date, String message) {
         this.table = "expense";
         this.primaryKey = "id";
         this.id = id;
         this.amount = amount;
+        this.phone = phone;
         this.receiver = receiver;
         this.type = type;
         this.date = date;
@@ -33,6 +35,7 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
             return new ExpenseRecord(
                 rs.getInt("id"),
                 rs.getInt("amount"),
+                rs.getLong("phone"),
                 rs.getString("receiver"),
                 rs.getString("type"),
                 rs.getString("date"),
@@ -43,15 +46,7 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
             return null;
         }
     }
-    
-    public void setMessage(String message){
-        this.message = message;
-    }
-    
-    public String getMessage(){
-        return message;
-    }
-    
+       
     public int getId() {
         return id;
     }
@@ -66,6 +61,14 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 
     public String getReceiver() {
@@ -90,5 +93,13 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
 
     public void setDate(String date) {
         this.date = date;
+    }
+    
+    public String getMessage(){
+        return message;
+    }
+    
+    public void setMessage(String message){
+        this.message = message;
     }
 }

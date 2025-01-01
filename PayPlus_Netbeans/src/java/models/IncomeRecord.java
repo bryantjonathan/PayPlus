@@ -6,6 +6,7 @@ import java.sql.SQLException;
 public class IncomeRecord extends Model<IncomeRecord> {
     private int id;
     private int amount;
+    private long phone;
     private String sender;
     private String type;
     private String date;
@@ -15,10 +16,11 @@ public class IncomeRecord extends Model<IncomeRecord> {
         this.primaryKey = "id";
     }
 
-    public IncomeRecord (int id, int amount, String sender, String type, String date, String message) {
+    public IncomeRecord (int id, int amount, long phone, String sender, String type, String date, String message) {
         this();
         this.id = id;
         this.amount = amount;
+        this.phone = phone;
         this.sender = sender;
         this.type = type;
         this.date = date;
@@ -31,6 +33,7 @@ public class IncomeRecord extends Model<IncomeRecord> {
             return new IncomeRecord(
                 rs.getInt("id"),
                 rs.getInt("amount"),
+                rs.getLong("phone"),
                 rs.getString("sender"),
                 rs.getString("type"),
                 rs.getString("date"),
@@ -41,12 +44,7 @@ public class IncomeRecord extends Model<IncomeRecord> {
             return null;
         }
     }
-    public void setMessage(String message){
-        this.message = message;
-    }
-    public String getMessage(){
-        return message;
-    }
+    
     public int getId() {
         return id;
     }
@@ -55,12 +53,20 @@ public class IncomeRecord extends Model<IncomeRecord> {
         this.id = id;
     }
 
-    public int getJumlah() {
+    public int getAmount() {
         return amount;
     }
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 
     public String getSender() {
@@ -85,5 +91,13 @@ public class IncomeRecord extends Model<IncomeRecord> {
 
     public void setDate(String date) {
         this.date = date;
+    }
+    
+    public String getMessage(){
+        return message;
+    }
+    
+    public void setMessage(String message){
+        this.message = message;
     }
 }
