@@ -47,3 +47,23 @@ INSERT INTO income (amount, phone, sender, type, date, message) VALUES
 (60000, '81244455566', 'Agung', 'gift', '2024-12-10', 'Hadiah sederhana untuk Agung'),
 (80000, '83811122233', 'Nisa', 'normal', '2024-12-05', NULL);
 
+-- DATABASE SAVINGS
+CREATE TABLE `savings` (
+  `id` int(11) NOT NULL,
+  `phone` bigint(50) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `target` double NOT NULL,
+  `terkumpul` double DEFAULT 0
+);
+
+INSERT INTO `savings` (`id`, `phone`, `nama`, `deskripsi`, `target`, `terkumpul`) VALUES
+(1, 0, 'Beli motor', 'motor baru untuk kuliah', 20000000, 5000000),
+(2, 0, 'Uang darurat', 'untuk keperluan mendadak', 10000000, 2500000),
+(3, 0, 'Liburan', 'Tabungan untuk liburan ke luar negeri', 0, 1000000),
+(4, 0, 'HP samsung', 'Beli hp baru', 0, 9000000),
+(5, 0, 'Motor', 'Beli motor buat orang tua', 10000000, 10000000),
+(14, 0, 'Beli laptop', 'laptop baru mengganti yang lama', 0, 15000000);
+
+ALTER TABLE `savings`
+  ADD PRIMARY KEY (`id`);

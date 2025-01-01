@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Controllers;
+package controllers;
 
 import models.Savings;
 import java.io.IOException;
@@ -53,7 +53,7 @@ public class SavingsServlet extends HttpServlet {
             where.where("phone = 0");
             ArrayList<Savings> saves = where.get();
             request.getSession().setAttribute("list", saves);
-            request.getRequestDispatcher("SavingsPage.jsp").forward(request, response);
+            request.getRequestDispatcher("Pages/SavingsPage.jsp").forward(request, response);
         } else if (m.equals("add")) {
             Savings where = new Savings();
             where.where("phone = 0");
