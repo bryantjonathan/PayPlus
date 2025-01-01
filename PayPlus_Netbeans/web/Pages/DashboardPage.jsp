@@ -18,6 +18,26 @@
     <link rel="icon" href="Images/logoTab.png" type="image/icon">
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="DasboardPage.css">
+    <style>
+        /* Custom styles for dropdown */
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            z-index: 10;
+        }
+
+        .dropdown.show {
+            display: block;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .balance-card {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
@@ -66,7 +86,28 @@
            
             %>
             <h1 class="text-3xl font-bold mb-8 text-gray-800">Welcome back, Akbar!</h1>
-
+            <!-- Balance Card -->
+            <div class="balance-card rounded-xl p-6 mb-8 text-white">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-sm opacity-90">Available Balance</p>
+                        <h2 class="text-3xl font-bold mt-1">Rp 15,000.00</h2>
+                    </div>
+                    <button id="topupButton" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+                        Top Up
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <i data-feather="arrow-up-right" class="w-4 h-4 mr-1"></i>
+                        <span class="text-sm">Income: Rp <%= income.get(0)%></span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="arrow-down-left" class="w-4 h-4 mr-1"></i>
+                        <span class="text-sm">Expense: Rp <%= expense.get(0)%></span>
+                    </div>
+                </div>
+            </div>
 
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                 <div
@@ -77,26 +118,6 @@
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Savings</p>
                         <p class="text-lg font-semibold text-gray-700">Rp 15,000.00</p>
-                    </div>
-                </div>
-                <div
-                    class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
-                        <i data-feather="trending-up"></i>
-                    </div>
-                    <div>
-                        <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp. <%= income.get(0)%></p>
-                    </div>
-                </div>
-                <div
-                    class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div class="p-3 mr-4 text-red-500 bg-red-100 rounded-full">
-                        <i data-feather="trending-down"></i>
-                    </div>
-                    <div>
-                        <p class="mb-2 text-sm font-medium text-gray-600">Total Expenses</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp. <%= expense.get(0)%></p>
                     </div>
                 </div>
                 <div
@@ -255,22 +276,23 @@
         </main>
     </div>
     <script>
-        feather.replace()
-        // Profile dropdown functionality
+         // Dropdown toggle
         const profilePhoto = document.getElementById('profilePhoto');
         const profileDropdown = document.getElementById('profileDropdown');
 
-        profilePhoto.addEventListener('click', function (event) {
-            event.stopPropagation();
+        profilePhoto.addEventListener('click', () => {
             profileDropdown.classList.toggle('show');
         });
 
         // Close dropdown when clicking outside
-        document.addEventListener('click', function (event) {
-            if (!profileDropdown.contains(event.target) && event.target !== profilePhoto) {
+        document.addEventListener('click', (event) => {
+            if (!profilePhoto.contains(event.target) && !profileDropdown.contains(event.target)) {
                 profileDropdown.classList.remove('show');
             }
         });
+
+        // Load Feather Icons
+        feather.replace();
     </script>
 </body>
 
