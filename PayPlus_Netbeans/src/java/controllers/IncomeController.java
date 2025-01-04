@@ -15,14 +15,13 @@ public class IncomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String phone = "83824099809";
+        String phone = "838240998098888";
         
         ArrayList<ArrayList<Object>> dataIncome = new IncomeRecord().query(
                 "SELECT SUM(amount), "
                         + "COUNT(*), "
                         + "SUM(CASE WHEN type = 'normal' THEN amount ELSE 0 END), "
-                        + "SUM(CASE WHEN type = 'gift' THEN amount ELSE 0 END) "
-                        + "FROM income WHERE phone ="+phone);
+                        + "SUM(CASE WHEN type = 'gift' THEN amount ELSE 0 END) "+"FROM income WHERE phone ="+phone);
         request.setAttribute("dataIncome", dataIncome);
         
         String filter = request.getParameter("filter");
@@ -39,8 +38,11 @@ public class IncomeController extends HttpServlet {
             conds.where("phone = " + phone + " AND type = 'gift'");
             ArrayList<IncomeRecord> incomeList = conds.get();
             request.setAttribute("IncomeList", incomeList); 
+        }else if ("topup".equals(filter)) { // view filter gift
+            conds.where("phone = " + phone + " AND type = 'topup'");
+            ArrayList<IncomeRecord> incomeList = conds.get();
+            request.setAttribute("IncomeList", incomeList); 
         }
-         
         request.getRequestDispatcher("Pages/IncomePage.jsp").forward(request, response);
     }
 }
