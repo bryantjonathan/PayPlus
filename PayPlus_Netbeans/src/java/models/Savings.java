@@ -8,15 +8,15 @@ public class Savings extends Model<Savings> {
     private Long phone;
     private String nama;
     private String deskripsi;
-    private double target;
-    private double terkumpul;
+    private Long target;
+    private Long terkumpul;
 
     public Savings() {
         this.table = "savings";
         this.primaryKey = "id";
     }
 
-    public Savings(int id, Long phone, String nama, String deskripsi, double target, double terkumpul) {
+    public Savings(int id, Long phone, String nama, String deskripsi, Long target, Long terkumpul) {
         this.table = "savings";
         this.primaryKey = "id";
         this.id = id;
@@ -35,8 +35,8 @@ public class Savings extends Model<Savings> {
                     rs.getLong("phone"),
                     rs.getString("nama"),
                     rs.getString("deskripsi"),
-                    rs.getDouble("target"),
-                    rs.getDouble("terkumpul")
+                    rs.getLong("target"),
+                    rs.getLong("terkumpul")
             );
         } catch (Exception e) {
             setMessage(e.getMessage());
@@ -76,19 +76,19 @@ public class Savings extends Model<Savings> {
         this.deskripsi = deskripsi;
     }
 
-    public double getTarget() {
+    public Long getTarget() {
         return target;
     }
 
-    public void setTarget(double target) {
+    public void setTarget(Long target) {
         this.target = target;
     }
 
-    public double getTerkumpul() {
+    public Long getTerkumpul() {
         return terkumpul;
     }
 
-    public void setTerkumpul(double terkumpul) {
+    public void setTerkumpul(Long terkumpul) {
         this.terkumpul = terkumpul;
     }
 

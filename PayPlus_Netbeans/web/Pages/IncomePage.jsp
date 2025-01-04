@@ -138,6 +138,8 @@
                        class="filter-btn <%= "normal".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700"%> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Normal</a>
                     <a href="Income?filter=gift" id="giftFilter"
                        class="filter-btn <%= "gift".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700"%> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">Gift</a>
+                    <a href="Income?filter=topup" id="topupFilter"
+                       class="filter-btn <%= "topup".equals(request.getParameter("filter")) ? "bg-blue-500 text-white" : "bg-gray-200 text-white-700"%> px-4 py-2 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white">TopUp</a>
                 </div>
 
             </div>
