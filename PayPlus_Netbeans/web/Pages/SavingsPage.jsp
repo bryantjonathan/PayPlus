@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Savings"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,8 +48,8 @@
 
                 if (listTabungan != null) {
                     for (Savings saving : listTabungan) {
-                        totalTarget += saving.getTarget();
-                        totalCollected += saving.getTerkumpul();
+                        totalTarget += (double) saving.getTarget();
+                        totalCollected += (double) saving.getTerkumpul();
                     }
                 }
             %>
@@ -99,11 +100,11 @@
                     <p class="text-gray-600 mb-4"><%= s.getDeskripsi()%></p>
                     <div class="mb-2">
                         <p class="text-sm font-medium text-gray-500">Target</p>
-                        <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", s.getTarget())%></p>
+                        <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", (double) s.getTarget())%></p>
                     </div>
                     <div class="mb-2">
                         <p class="text-sm font-medium text-gray-500">Amount Collected</p>
-                        <p class="text-lg font-semibold text-green-600">Rp <%= String.format("%,.0f", s.getTerkumpul())%></p>
+                        <p class="text-lg font-semibold text-green-600">Rp <%= s.getTerkumpul()%></p>
                     </div>
                     <% if (s.getTarget() != s.getTerkumpul() && s.getTarget() > s.getTerkumpul()) { %>
                     <a href="savings?m=addtosavings&id=<%= s.getId()%>">

@@ -112,7 +112,17 @@
                     </div>
                 </div>
 
+                <%
+                // Retrieve the list of savings from session
+                ArrayList<Savings> listTabungan = (ArrayList<Savings>) request.getSession().getAttribute("list");
+                double totalCollected = 0;
 
+                if (listTabungan != null) {
+                    for (Savings saving : listTabungan) {
+                        totalCollected += (double) saving.getTerkumpul();
+                    }
+                }
+            %>
                 <div class="grid gap-6 mb-8 md:grid-cols-2">
                     <div
                         class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
@@ -121,7 +131,7 @@
                         </div>
                         <div>
                             <p class="mb-2 text-sm font-medium text-gray-600">Total Savings</p>
-                            <p class="text-lg font-semibold text-gray-700">Rp 15,000.00</p>
+                            <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", totalCollected) %></p>
                         </div>
                     </div>
                     <div
@@ -214,7 +224,7 @@
                                 <div>
                                     <div class="flex justify-between mb-1">
                                         <span class="text-gray-700"><%= saves.get(i).getNama()%></span>
-                                        <span class="text-gray-600">Rp <%= saves.get(i).getTerkumpul()%> / <%= saves.get(i).getTarget()%></span>
+                                        <span class="text-gray-600">Rp <%= String.format("%,.0f", (double) saves.get(i).getTerkumpul())%> / <%= String.format("%,.0f", (double) saves.get(i).getTarget())%></span>
                                     </div>
                                     <div class="w-full bg-gray-200 rounded-full h-2.5">
                                         <div class="bg-green-600 h-2.5 rounded-full" style="width: <%= (double) saves.get(i).getTerkumpul() / saves.get(i).getTarget() * 100%>%"></div>
