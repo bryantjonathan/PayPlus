@@ -23,16 +23,18 @@ public class DashboardController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String phone = "83824099809";
-        
-        ArrayList<ArrayList<Object>> dataExpense = new ExpenseRecord().query(
-                "SELECT SUM(amount) FROM expense WHERE phone = " + phone);
-        ArrayList<ArrayList<Object>> dataIncome = new ExpenseRecord().query(
-                "SELECT SUM(amount) FROM income WHERE phone = " + phone);
-        request.setAttribute("dataIncome", dataIncome);
-        request.setAttribute("dataExpense", dataExpense);
-        request.getRequestDispatcher("Pages/DashboardPage.jsp").forward(request, response);
+            throws ServletException, IOException {       
+        if (request.getSession().getAttribute("currPhone") == null) {
+            response.sendRedirect("User?menu=login");
+        } else {
+            Object phone = request.getSession().getAttribute("currPhone");
+            ArrayList<ArrayList<Object>> dataExpense = new ExpenseRecord().query(
+                    "SELECT SUM(amount) FROM expense WHERE phone = " + phone);
+            ArrayList<ArrayList<Object>> dataIncome = new ExpenseRecord().query(
+                    "SELECT SUM(amount) FROM income WHERE phone = " + phone);
+            request.setAttribute("dataIncome", dataIncome);
+            request.setAttribute("dataExpense", dataExpense);
+            request.getRequestDispatcher("Pages/DashboardPage.jsp").forward(request, response);
+        }
     }
-
 }

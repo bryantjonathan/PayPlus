@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.User;
+import models.SilverUser;
+import models.BronzeUser;
 
 @WebServlet(name = "TransferController", urlPatterns = {"/Transfer"})
 public class TransferController extends HttpServlet {
@@ -42,20 +44,39 @@ public class TransferController extends HttpServlet {
             String phone = request.getParameter("phone");
             double checkBalance = currUser.getBalance() - Double.parseDouble(request.getParameter("amount"));
             if (checkBalance >= 0) {
-                user = user.find(phone);
-                user.setBalance(user.getBalance() + Double.parseDouble(request.getParameter("amount")));
-                currUser.setBalance(currUser.getBalance() - Double.parseDouble(request.getParameter("amount")));
-                currUser.update();
-                user.update();
-                request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
-                request.setAttribute("saldo", "Transfer Succeeded.");
+                if (currUser.getRole().equals("gold")) {
+                    user = user.find(phone);
+                    user.setBalance(user.getBalance() + Double.parseDouble(request.getParameter("amount")));
+                    currUser.setBalance(currUser.getBalance() - Double.parseDouble(request.getParameter("amount")));
+                    currUser.update();
+                    user.update();
+                    request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
+                    request.setAttribute("saldo", "Transfer Succeeded.");
+                } else if (currUser.getRole().equals("silver")) {
+                    SilverUser userType = new SilverUser();
+                    user = user.find(phone);
+                    user.setBalance(user.getBalance() + Double.parseDouble(request.getParameter("amount")));
+                    currUser.setBalance(currUser.getBalance() - Double.parseDouble(request.getParameter("amount")) - userType.getAdminFee());
+                    currUser.update();
+                    user.update();
+                    request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
+                    request.setAttribute("saldo", "Transfer Succeeded.");
+                } else if (currUser.getRole().equals("bronze")) {
+                    BronzeUser userType = new BronzeUser();
+                    user = user.find(phone);
+                    user.setBalance(user.getBalance() + Double.parseDouble(request.getParameter("amount")));
+                    currUser.setBalance(currUser.getBalance() - Double.parseDouble(request.getParameter("amount")) - userType.getAdminFee());
+                    currUser.update();
+                    user.update();
+                    request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
+                    request.setAttribute("saldo", "Transfer Succeeded.");
+                }
+
             } else {
                 request.setAttribute("saldo", "Insufficient Balance.");
             }
 
             request.getRequestDispatcher("Pages/transferPage.jsp").forward(request, response);
-//            response.sendRedirect("transferPage.jsp");
-
         }
     }
 }

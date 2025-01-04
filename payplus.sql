@@ -9,7 +9,6 @@ CREATE TABLE expense (
     message TEXT DEFAULT NULL
 );
 
--- Mengisi data
 INSERT INTO expense (amount, phone, receiver, type, date, message) VALUES
 (150000, '83824099809', 'Ahmad', 'normal', '2024-12-01', NULL),
 (50000, '0', 'Budi', 'gift', '2024-12-02', 'Hadiah ulang tahun untuk Budi'),
@@ -23,7 +22,7 @@ INSERT INTO expense (amount, phone, receiver, type, date, message) VALUES
 (75000, '0', 'Eka', 'normal', '2024-12-05', NULL);
 
 
--- DATABASE INCOMERECORD
+-- DATABASE INCOME RECORD
 CREATE TABLE income (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
     amount INT(11) NOT NULL,
@@ -33,7 +32,6 @@ CREATE TABLE income (
     date DATE NOT NULL,
     message TEXT DEFAULT NULL
 );
-
 
 INSERT INTO income (amount, phone, sender, type, date, message) VALUES
 (250000, '83824099809', 'Rama', 'normal', '2024-12-01', NULL),
@@ -67,3 +65,18 @@ INSERT INTO `savings` (`id`, `phone`, `nama`, `deskripsi`, `target`, `terkumpul`
 
 ALTER TABLE `savings`
   ADD PRIMARY KEY (`id`);
+
+-- DATABASE USER
+CREATE TABLE `users` (
+  `phone` bigint(50) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `role` varchar(250) NOT NULL,
+  `balance` double NOT NULL
+);
+
+INSERT INTO `users` (`phone`, `name`, `email`, `password`, `role`, `balance`) VALUES
+(6281301223169, 'Andre Aditya Amann', 'andre@gmail.com', '3169', 'bronze', 5300000),
+(6281301223187, 'Zaidaan Afif Randih', 'zaidanrandih@gmail.com', '3187', 'gold', 100900002),
+(6281301223393, 'Rafi Suwardana', 'rafisuwardana@gmail.com', '3393', 'bronze', 5000000);
