@@ -96,18 +96,18 @@ public class SavingsServlet extends HttpServlet {
             s.setPhone(Long.parseLong("0"));
             s.setNama(request.getParameter("nama"));
             s.setDeskripsi(request.getParameter("deskripsi"));
-            s.setTarget(Double.parseDouble(request.getParameter("target")));
-            s.setTerkumpul(0);
+            s.setTarget(Long.parseLong(request.getParameter("target")));
+            s.setTerkumpul(Long.parseLong("0"));
             s.insert();
             ArrayList<Savings> saves = new Savings().get();
             request.getSession().setAttribute("list", saves);
             response.sendRedirect("savings");
         } else if ("update".equals(action)) {
             String id = request.getParameter("id");
-            double amountToAdd = Double.parseDouble(request.getParameter("amount"));
+            Long amountToAdd = Long.parseLong(request.getParameter("amount"));
             Savings s = new Savings();
             s = s.find(id);
-            s.setTerkumpul(Double.parseDouble(request.getParameter("amountnow")) + amountToAdd);
+            s.setTerkumpul(Long.parseLong(request.getParameter("amountnow")) + amountToAdd);
             s.update();
             ArrayList<Savings> saves = new Savings().get();
             request.getSession().setAttribute("list", saves);
