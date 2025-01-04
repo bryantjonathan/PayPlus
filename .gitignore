@@ -4,3 +4,4 @@ nbbuild/
 dist/
 build/
 .log
+private/

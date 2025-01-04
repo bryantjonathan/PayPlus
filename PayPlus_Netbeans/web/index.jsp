@@ -57,7 +57,7 @@
                     <a href="#" class="text-gray-600 hover:text-indigo-500 transition duration-300">Contact</a>
                 </div>
                 <div class="hidden md:block">
-                    <a href="<%= request.getContextPath() %>/LoginPage/loginPage.jsp" class="bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition duration-300">Log in</a>
+                    <a href="User?menu=login" class="bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition duration-300">Log in</a>
                 </div>
                 <div class="md:hidden">
                     <button id="menu-toggle" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600">
@@ -81,7 +81,7 @@
                         PayPlus helps you manage money, track expenses, and achieve your financial goals with ease and precision.
                     </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="<%= request.getContextPath() %>/SignUpPage/SignUpPage.jsp" class="bg-indigo-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-600 transition duration-300 text-center">
+                        <a href="User?menu=signup" class="bg-indigo-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-600 transition duration-300 text-center">
                             Get Started
                         </a>
                         <a href="#" class="border border-indigo-500 text-indigo-500 font-semibold px-8 py-3 rounded-full hover:bg-indigo-50 transition duration-300 text-center">
