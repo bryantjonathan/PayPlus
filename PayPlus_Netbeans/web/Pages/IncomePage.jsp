@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList, models.IncomeRecord"%>
+<%@page import="java.util.ArrayList, models.IncomeRecord, models.User"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -147,7 +147,9 @@
                 <%
                     ArrayList<IncomeRecord> incomes = (ArrayList<IncomeRecord>) request.getAttribute("IncomeList");
                     if (incomes != null && !incomes.isEmpty()) {
+                        User user = new User();
                         for (IncomeRecord income : incomes) {
+                            user = user.find(income.getSenderPhone().toString());
                 %>
                 <div class="bg-white shadow rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg income-card">
                     <div class="p-6">
@@ -158,7 +160,7 @@
                         <div class="space-y-2">
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-600">Sender:</span>
-                                <span class="font-medium text-gray-800"><%= income.getSender()%></span>
+                                <span class="font-medium text-gray-800"><%= user.getName() %></span>
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-600">Type:</span>

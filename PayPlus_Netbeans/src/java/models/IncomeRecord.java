@@ -6,8 +6,8 @@ import java.sql.SQLException;
 public class IncomeRecord extends Model<IncomeRecord> {
     private int id;
     private int amount;
-    private long phone;
-    private String sender;
+    private Long phone;
+    private Long sender_phone;
     private String type;
     private String date;
     private String message;
@@ -16,12 +16,12 @@ public class IncomeRecord extends Model<IncomeRecord> {
         this.primaryKey = "id";
     }
 
-    public IncomeRecord (int id, int amount, long phone, String sender, String type, String date, String message) {
+    public IncomeRecord (int id, int amount, Long phone, Long sender_phone, String type, String date, String message) {
         this();
         this.id = id;
         this.amount = amount;
         this.phone = phone;
-        this.sender = sender;
+        this.sender_phone = sender_phone;
         this.type = type;
         this.date = date;
         this.message = message;
@@ -34,7 +34,7 @@ public class IncomeRecord extends Model<IncomeRecord> {
                 rs.getInt("id"),
                 rs.getInt("amount"),
                 rs.getLong("phone"),
-                rs.getString("sender"),
+                rs.getLong("sender_phone"),
                 rs.getString("type"),
                 rs.getString("date"),
                 rs.getString("message")
@@ -69,12 +69,12 @@ public class IncomeRecord extends Model<IncomeRecord> {
         this.phone = phone;
     }
 
-    public String getSender() {
-        return sender;
+    public Long getSenderPhone() {
+        return sender_phone;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setSender(Long sender_phone) {
+        this.sender_phone = sender_phone;
     }
 
     public String getType() {

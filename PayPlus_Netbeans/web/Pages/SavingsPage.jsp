@@ -17,16 +17,16 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center py-4">
                     <div class="flex items-center">
-                        <a href="DasboardPage.jsp">
-                            <img id="logo" src="logo.png">
+                        <a href="Dashboard">
+                            <img id="logo" src="Images\logo.png">
                         </a>
                     </div>
                     <nav class="hidden sm:flex space-x-4">
-                        <a href="DasboardPage.jsp"
+                        <a href="Dashboard"
                            class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                        <a href="IncomePage.jsp"
+                        <a href="Income"
                            class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
-                        <a href="ExpensePage.jsp"
+                        <a href="Expense"
                            class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
                         <a href="#"
                            class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
@@ -53,7 +53,7 @@
                     }
                 }
             %>
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
                 <div class="flex items-center p-4 bg-white rounded-lg shadow">
                     <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -104,7 +104,7 @@
                     </div>
                     <div class="mb-2">
                         <p class="text-sm font-medium text-gray-500">Amount Collected</p>
-                        <p class="text-lg font-semibold text-green-600">Rp <%= s.getTerkumpul()%></p>
+                        <p class="text-lg font-semibold text-green-600">Rp <%= String.format("%,.0f", (double) s.getTerkumpul())%></p>
                     </div>
                     <% if (s.getTarget() != s.getTerkumpul() && s.getTarget() > s.getTerkumpul()) { %>
                     <a href="savings?m=addtosavings&id=<%= s.getId()%>">
@@ -120,8 +120,8 @@
                     <% } else { %>
                     <p class="text-lg font-semibold text-green-600">Target achieved!</p>
                     <a href="savings?m=delete&id=<%= s.getId()%>">
-                        <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-700">
-                            Delete
+                        <button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-800">
+                            Transfer to balance
                         </button>
                     </a>
                     <% } %>

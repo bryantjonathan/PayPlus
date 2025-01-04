@@ -6,8 +6,8 @@ import java.sql.SQLException;
 public class ExpenseRecord extends Model<ExpenseRecord> {
     private int id;
     private int amount;
-    private long phone;
-    private String receiver;
+    private Long phone;
+    private Long receiver_phone;
     private String type;
     private String date;
     private String message;
@@ -17,13 +17,13 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
         this.primaryKey = "id";
     }
 
-    public ExpenseRecord (int id, int amount, long phone, String receiver, String type, String date, String message) {
+    public ExpenseRecord (int id, int amount, Long phone, Long receiver_phone, String type, String date, String message) {
         this.table = "expense";
         this.primaryKey = "id";
         this.id = id;
         this.amount = amount;
         this.phone = phone;
-        this.receiver = receiver;
+        this.receiver_phone = receiver_phone;
         this.type = type;
         this.date = date;
         this.message = message;
@@ -36,7 +36,7 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
                 rs.getInt("id"),
                 rs.getInt("amount"),
                 rs.getLong("phone"),
-                rs.getString("receiver"),
+                rs.getLong("receiver_phone"),
                 rs.getString("type"),
                 rs.getString("date"),
                 rs.getString("message")
@@ -71,12 +71,12 @@ public class ExpenseRecord extends Model<ExpenseRecord> {
         this.phone = phone;
     }
 
-    public String getReceiver() {
-        return receiver;
+    public Long getReceiverPhone() {
+        return receiver_phone;
     }
 
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
+    public void setReceiver(Long receiver_phone) {
+        this.receiver_phone = receiver_phone;
     }
 
     public String getType() {

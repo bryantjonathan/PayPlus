@@ -16,14 +16,14 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="DasboardPage.jsp">
-                        <img id="logo" src="logo.png" alt="Logo" class="h-8">
+                    <a href="Dashboard">
+                        <img id="logo" src="Images\logo.png" alt="Logo" class="h-8">
                     </a>
                 </div>
                 <nav class="hidden sm:flex space-x-4">
-                    <a href="DasboardPage.jsp" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                    <a href="IncomePage.jsp" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
-                    <a href="ExpensePage.jsp" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                    <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
+                    <a href="Income" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
+                    <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
                     <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
                 </nav>
             </div>
@@ -60,11 +60,11 @@
             </div>
             <div class="mb-4">
                 <p class="text-sm font-medium text-gray-600">Target</p>
-                <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", savingToEdit.getTarget()) %></p>
+                <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", (double) savingToEdit.getTarget()) %></p>
             </div>
             <div class="mb-4">
                 <p class="text-sm font-medium text-gray-700">Current Amount Collected</p>
-                <p class="text-lg font-semibold text-green-600">Rp <%= String.format("%,.0f", savingToEdit.getTerkumpul()) %></p>
+                <p class="text-lg font-semibold text-green-600">Rp <%= String.format("%,.0f", (double) savingToEdit.getTerkumpul()) %></p>
             </div>
             <div class="mb-4">
                 <label for="amount" class="block text-sm font-medium text-gray-700">Amount to Add (Rp)</label>

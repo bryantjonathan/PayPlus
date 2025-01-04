@@ -92,7 +92,7 @@
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <p class="text-sm opacity-90">Available Balance</p>
-                            <h2 class="text-3xl font-bold mt-1">Rp. <%= request.getSession().getAttribute("currBalance")%></h2>
+                            <h2 class="text-3xl font-bold mt-1">Rp. <%= String.format("%,.0f", Double.parseDouble(request.getSession().getAttribute("currBalance").toString()))%></h2>
                         </div>
                         <a href="User?menu=topup">
                             <button id="topupButton" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
@@ -113,16 +113,16 @@
                 </div>
 
                 <%
-                // Retrieve the list of savings from session
-                ArrayList<Savings> listTabungan = (ArrayList<Savings>) request.getSession().getAttribute("list");
-                double totalCollected = 0;
+                    // Retrieve the list of savings from session
+                    ArrayList<Savings> listTabungan = (ArrayList<Savings>) request.getSession().getAttribute("list");
+                    double totalCollected = 0;
 
-                if (listTabungan != null) {
-                    for (Savings saving : listTabungan) {
-                        totalCollected += (double) saving.getTerkumpul();
+                    if (listTabungan != null) {
+                        for (Savings saving : listTabungan) {
+                            totalCollected += (double) saving.getTerkumpul();
+                        }
                     }
-                }
-            %>
+                %>
                 <div class="grid gap-6 mb-8 md:grid-cols-2">
                     <div
                         class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
@@ -131,7 +131,7 @@
                         </div>
                         <div>
                             <p class="mb-2 text-sm font-medium text-gray-600">Total Savings</p>
-                            <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", totalCollected) %></p>
+                            <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", totalCollected)%></p>
                         </div>
                     </div>
                     <div
@@ -166,47 +166,52 @@
                 </div>
 
                 <div class="grid gap-6 mb-8 md:grid-cols-2">
+                    <a href="bill">
 
-                    <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
-                        <h2 class="text-xl font-semibold text-gray-700 mb-4">Upcoming Bills</h2>
-                        <ul class="space-y-3">
-                            <li class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <i data-feather="home" class="mr-3 text-gray-500"></i>
-                                    <span class="text-gray-700">Rent</span>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-gray-700 font-semibold">Rp 1,200.00</p>
-                                    <p class="text-sm text-gray-500">Due on Jul 1, 2023</p>
-                                </div>
-                            </li>
-                            <li class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <i data-feather="zap" class="mr-3 text-gray-500"></i>
-                                    <span class="text-gray-700">Electricity</span>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-gray-700 font-semibold">Rp 80.00</p>
-                                    <p class="text-sm text-gray-500">Due on Jul 15, 2023</p>
-                                </div>
-                            </li>
-                            <li class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <i data-feather="wifi" class="mr-3 text-gray-500"></i>
-                                    <span class="text-gray-700">Internet</span>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-gray-700 font-semibold">Rp 50.00</p>
-                                    <p class="text-sm text-gray-500">Due on Jul 20, 2023</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2 class="text-xl font-semibold text-gray-700 mb-4">Upcoming Bills</h2>
+                                <i data-feather="chevron-right" class="text-gray-500"></i>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i data-feather="home" class="mr-3 text-gray-500"></i>
+                                        <span class="text-gray-700">Rent</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-gray-700 font-semibold">Rp 1,200.00</p>
+                                        <p class="text-sm text-gray-500">Due on Jul 1, 2023</p>
+                                    </div>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i data-feather="zap" class="mr-3 text-gray-500"></i>
+                                        <span class="text-gray-700">Electricity</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-gray-700 font-semibold">Rp 80.00</p>
+                                        <p class="text-sm text-gray-500">Due on Jul 15, 2023</p>
+                                    </div>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i data-feather="wifi" class="mr-3 text-gray-500"></i>
+                                        <span class="text-gray-700">Internet</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-gray-700 font-semibold">Rp 50.00</p>
+                                        <p class="text-sm text-gray-500">Due on Jul 20, 2023</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
                     <a href="savings">
                         <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
                             <%
                                 ArrayList<Savings> saves = (ArrayList<Savings>) request.getSession().getAttribute("list");
-                                double progress = (double) saves.get(0).getTerkumpul() / saves.get(0).getTarget() * 100;
+
                             %>
                             <div class="flex items-center justify-between mb-4">
                                 <h2 class="text-xl font-semibold text-gray-700">Savings Goals</h2>
@@ -216,6 +221,10 @@
                                 <%  int i;
                                     i = 0;
                                     if (saves != null) {
+                                        double progress = (double) saves.get(i).getTerkumpul() / saves.get(i).getTarget() * 100;
+                                        if (progress > 100) {
+                                            progress = 100;
+                                        }
                                         for (Savings s : saves) {
                                             if (i == 3) {
                                                 break;
@@ -227,7 +236,7 @@
                                         <span class="text-gray-600">Rp <%= String.format("%,.0f", (double) saves.get(i).getTerkumpul())%> / <%= String.format("%,.0f", (double) saves.get(i).getTarget())%></span>
                                     </div>
                                     <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-green-600 h-2.5 rounded-full" style="width: <%= (double) saves.get(i).getTerkumpul() / saves.get(i).getTarget() * 100%>%"></div>
+                                        <div class="bg-green-600 h-2.5 rounded-full" style="width: <%= progress%>"></div>
                                     </div>
                                 </div>
                                 <% i++;
@@ -251,55 +260,6 @@
                             <i data-feather="send" class="w-4 h-4 mr-2"></i>
                             Start New Transfer
                         </a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4">Recent Transfers</h2>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Date</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        From</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        To</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-28</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Checking</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Savings</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">Rp 500.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-25</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Savings</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Investment</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">Rp 1,000.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-20</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Checking</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Bills</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">Rp 300.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-4 text-right">
-                        <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">View All Transfers</a>
                     </div>
                 </div>
             </main>
