@@ -7,6 +7,7 @@
 <%@page import="models.Savings"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="models.User, java.sql.ResultSet, javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +53,10 @@
                             </a>
                         </div>
                         <div class="flex items-center space-x-4">
+                            <%
+                            User user = new User();
+                            user = user.find(request.getSession().getAttribute("currPhone").toString());
+                            %>
                             <div class="relative">
                                 <img id="profilePhoto" src="https://i.pravatar.cc/40?img=68" alt="Profile"
                                      class="w-10 h-10 rounded-full border-2 border-indigo-500 cursor-pointer">
@@ -61,11 +66,11 @@
                                 <div id="profileDropdown"
                                      class="dropdown absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10">
                                     <div class="px-4 py-2 border-b">
-                                        <p class="text-sm font-medium text-gray-900">Fausta Akbar</p>
-                                        <p class="text-xs text-gray-500">Account #: 1234567890</p>
-                                        <p class="text-xs font-medium text-yellow-500">Gold Member</p>
+                                        <p class="text-sm font-medium text-gray-900"><%=user.getName()%></p>
+                                        <p class="text-xs text-gray-500">Account #: <%=user.getPhone()%></p>
+                                        <p class="text-xs font-medium text-yellow-500">Member <%=user.getRole()%></p>
                                     </div>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account
+                                    <a href="Setting" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account
                                         Settings</a>
                                     <a href="User?menu=logout"
                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>

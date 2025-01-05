@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="models.User, java.sql.ResultSet, javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,7 @@
                 <div class="flex justify-between items-center py-4">
                     <div class="flex items-center">
                         <a href="Dashboard">
-                            <img id="logo" src="..\Images\logo.png">
+                                <img id="logo" src="Images\logo.png">
                         </a>
                     </div>
                 </div>
@@ -49,39 +50,40 @@
                 </div>
 
                 <!-- Settings Form -->
-                <div class="bg-white rounded-lg shadow-xs p-6 space-y-8">
-                    <form id="settingsForm" class="space-y-6">
-                        <!-- Profile Section -->
+                <div class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
+                     <%
+                            User user = new User();
+                            user = user.find(request.getSession().getAttribute("currPhone").toString());
+                     %>
+                    <form id="transferForm" class="space-y-4" action="Setting" method="POST">
+                         <!-- Profile Section -->
                         <div class="space-y-6">
                             <div class="flex items-center space-x-6">
                                 <div class="relative">
                                     <img src="https://i.pravatar.cc/80?img=68" alt="Profile Picture" class="w-20 h-20 rounded-full">
-                                    
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium text-gray-900">Profile Picture</h3>
-                                    <p class="text-xs font-medium text-yellow-500">Gold Member</p>
+                                    <p class="text-xs font-medium text-yellow-500">Member <%=user.getRole()%></p>
                                 </div>
                             </div>
 
                             <!-- Name -->
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                                <input type="text" id="name" name="name" value="Fausta Akbar"
+                                <input type="text" id="name" name="name" value="<%=user.getName()%>"
                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
 
                             <!-- Phone Number -->
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                <input type="text" id="phone" name="phone" value="+62 812-3456-7890"
+                                <input type="text" id="phone" name="phone" value="<%=user.getPhone()%>"
                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
-                            
-                             <!-- Email -->
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="text" id="email" name="email" value="user@gmai.com"
+                                <input type="text" id="email" name="email" value="<%=user.getEmail()%>"
                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                         </div>
@@ -106,10 +108,19 @@
                                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
                             </div>
+                            <p style="color: <%=request.getAttribute("warna") != null ? request.getAttribute("warna") : "black"%>">
+                                <%=request.getAttribute("alert") != null ? request.getAttribute("alert") : ""%>
+                            </p>
+
                         </div>
 
                         <!-- Save Button -->
+                        
                         <div class="flex justify-end pt-6">
+                            <a href="Dashboard"
+                                class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                Cancel
+                            </a>
                             <button type="submit"
                                 class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 Save Changes
