@@ -29,9 +29,6 @@ public class User extends Model<User> {
         this.role = role;
     }
     
-    
-
-    // Getters and Setters
     public String getName() {
         return name;
     }

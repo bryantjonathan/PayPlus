@@ -17,7 +17,6 @@
 </head>
 <body class="bg-gray-50 font-sans">
     <div class="flex min-h-screen">
-        <!-- Left Section -->
         <div class="hidden lg:flex flex-1 items-center justify-center bg-indigo-100">
             <div class="text-center max-w-md">
                 <h1 class="text-4xl font-bold text-indigo-500 mb-6">Welcome to PayPlus</h1>
@@ -25,7 +24,6 @@
             </div>
         </div>
 
-        <!-- Right Section -->
         <div class="flex flex-col flex-1 items-center justify-center p-8">
             <div class="w-full max-w-md">
                 <div class="text-center mb-6">

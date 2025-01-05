@@ -7,10 +7,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- *
- * @author Monterico Adrian
- */
 public abstract class Model<E> {
 
     private Connection con;

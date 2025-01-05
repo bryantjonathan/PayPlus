@@ -38,7 +38,6 @@ public class SettingController extends HttpServlet {
             if(currentPassword.isEmpty()&&newPassword.isEmpty()&& currentPassword.isEmpty()){
                 currUser.setName(name);
                 currUser.setEmail(email);
-                
                 currUser.update();
                 request.setAttribute("alert", "Profile updated successfully!");
                 request.setAttribute("warna", "green");

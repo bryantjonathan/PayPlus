@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="../Images/logoTab.png" type="image/icon">
+    <link rel="icon" href="Images/logoTab.png" type="image/icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -53,7 +53,7 @@
             
             
             <p class="mt-6 text-center text-gray-600 text-sm">Don't have an account? <a
-                    href="signupPage.jsp" class="text-indigo-600 hover:underline">Sign Up</a></p>
+                    href="User?menu=signup" class="text-indigo-600 hover:underline">Sign Up</a></p>
         </div>
     </div>
 </body>

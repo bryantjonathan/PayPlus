@@ -38,9 +38,7 @@
             <h3 class=" font-bold mb-8 text-red-800">${alert}</h3>
             <h1 class="text-3xl font-bold mb-8 text-gray-800">Savings Page</h1>
 
-            <!-- Summary -->
             <%
-                // Retrieve the list of savings from session
                 ArrayList<Savings> listTabungan = (ArrayList<Savings>) request.getSession().getAttribute("list");
                 double totalTarget = 0;
                 double totalCollected = 0;
@@ -81,14 +79,12 @@
                 </div>
             </div>
 
-            <!-- Add Savings Button -->
             <a href="savings?m=add">
                 <button id="addSavingsButton" class="mb-4 bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">
                     Add Savings
                 </button>
             </a>
 
-            <!-- Savings List -->
             <div id="savingsContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <%
                     ArrayList<Savings> saves = (ArrayList<Savings>) request.getSession().getAttribute("list");

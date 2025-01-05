@@ -30,7 +30,6 @@
 </head>
 <body class="bg-gray-50">
     <div class="min-h-screen flex flex-col">
-        <!-- Header -->
         <header class="bg-white shadow-sm sticky top-0 z-10">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center py-4">
@@ -43,25 +42,22 @@
             </div>
         </header>
 
-        <!-- Main Content -->
         <main class="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8">
             <div class="max-w-2xl mx-auto">
                 <div class="flex items-center justify-between mb-8">
                     <h1 class="text-3xl font-bold text-gray-800">Account Settings</h1>
                 </div>
 
-                <!-- Settings Form -->
                 <div class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
                      <%
                             User user = new User();
                             user = user.find(request.getSession().getAttribute("currPhone").toString());
                      %>
                     <form id="transferForm" class="space-y-4" action="Setting" method="POST">
-                         <!-- Profile Section -->
                         <div class="space-y-6">
                             <div class="flex items-center space-x-6">
                                 <div class="relative">
-                                    <img src="https://i.pravatar.cc/80?img=68" alt="Profile Picture" class="w-20 h-20 rounded-full">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Profile Picture" class="w-20 h-20 rounded-full">
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium text-gray-900">Profile Picture</h3>
@@ -76,7 +72,6 @@
                                 </div>
                             </div>
 
-                            <!-- Name -->
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
                                 <input type="text" id="name" name="name" value="<%=user.getName()%>"
@@ -89,7 +84,6 @@
                             </div>
                         </div>
 
-                        <!-- Password Section -->
                         <div class="pt-6 border-t border-gray-200">
                             <h3 class="text-lg font-medium text-gray-900 mb-4">Change Password</h3>
                             <div class="space-y-4">
@@ -114,8 +108,6 @@
                             </p>
 
                         </div>
-
-                        <!-- Save Button -->
                         
                         <div class="flex justify-end pt-6">
                             <a href="Dashboard"
@@ -133,7 +125,6 @@
         </main>
     </div>
 
-    <!-- Success Message -->
     <div id="successMessage" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full opacity-0 transition-all duration-300">
         <div class="flex items-center space-x-2">
             <i data-feather="check-circle" class="w-5 h-5"></i>
@@ -142,17 +133,14 @@
     </div>
 
     <script>
-        // Initialize Feather icons
         feather.replace();
 
-        // Form handling
         const settingsForm = document.getElementById('settingsForm');
         const successMessage = document.getElementById('successMessage');
 
         settingsForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Basic validation
             const newPassword = document.getElementById('newPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
 
@@ -161,15 +149,12 @@
                 return;
             }
 
-            // Collect form data
             const formData = new FormData(settingsForm);
             const data = Object.fromEntries(formData);
             console.log('Settings update:', data);
 
-            // Show success message
             successMessage.classList.remove('translate-y-full', 'opacity-0');
             
-            // Hide success message after 3 seconds
             setTimeout(() => {
                 successMessage.classList.add('translate-y-full', 'opacity-0');
             }, 3000);

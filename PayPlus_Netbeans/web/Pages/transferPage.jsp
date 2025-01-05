@@ -62,7 +62,6 @@
             <main class="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold mb-8 text-gray-800">Who do you want to transfer to?</h1>
 
-                <!-- Search Section -->
                 <div class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
                     <h2 class="text-xl font-semibold text-gray-700 mb-4">Search for a Number</h2>
                     <form id="searchForm" class="flex items-center" action="Transfer?action=search" method="POST">
@@ -118,7 +117,6 @@
         </div>
 
         <script>
-            // Show/hide the message field based on transfer type
             document.getElementById('transferType').addEventListener('change', function () {
                 const messageContainer = document.getElementById('messageContainer');
                 if (this.value === 'gift') {
@@ -128,12 +126,11 @@
                 }
             });
 
-            // Validate amount before submitting
             document.getElementById('transferForm').addEventListener('submit', function (event) {
                 const amount = parseFloat(document.getElementById('amount').value);
                 if (isNaN(amount) || amount <= 0) {
                     alert('Please enter a valid transfer amount.');
-                    event.preventDefault(); // Prevent form submission
+                    event.preventDefault();
                 }
             });
         </script>

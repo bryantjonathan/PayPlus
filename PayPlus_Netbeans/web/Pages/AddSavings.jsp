@@ -35,11 +35,11 @@
         
         <form method="POST" action="savings?action=add" class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto">
             <div class="mb-4">
-                <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
+                <label for="nama" class="block text-sm font-medium text-gray-700">Name</label>
                 <input name="nama" id="nama" type="text" class="mt-1 p-2 w-full border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
             </div>
             <div class="mb-4">
-                <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                <label for="deskripsi" class="block text-sm font-medium text-gray-700">Description</label>
                 <textarea name="deskripsi" id="deskripsi" rows="3" class="mt-1 p-2 w-full border rounded-lg focus:ring-blue-500 focus:border-blue-500" required></textarea>
             </div>
             <div class="mb-4">
@@ -47,7 +47,7 @@
                 <input name="target" id="target" type="number" step="0.01" class="mt-1 p-2 w-full border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
             </div>
             <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded shadow hover:bg-blue-600">
-                Tambahkan
+                Add
             </button>
         </form>
     </main>

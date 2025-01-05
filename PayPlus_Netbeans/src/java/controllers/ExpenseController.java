@@ -29,15 +29,15 @@ public class ExpenseController extends HttpServlet {
 
             String filter = request.getParameter("filter");        
             ExpenseRecord conds = new ExpenseRecord();
-            if (request.getParameterMap().isEmpty()) { // view all
+            if (request.getParameterMap().isEmpty()) { 
                 conds.where("phone = " + phone);
                 ArrayList<ExpenseRecord> expenseList = conds.get();
                 request.setAttribute("expenseList", expenseList);
-            } else if ("normal".equals(filter)) { //view filter normal
+            } else if ("normal".equals(filter)) {
                 conds.where("phone = " + phone + " AND type = 'normal'");
                 ArrayList<ExpenseRecord> expenseList = conds.get();
                 request.setAttribute("expenseList", expenseList);
-            } else if ("gift".equals(filter)) { // view filter gift
+            } else if ("gift".equals(filter)) {
                 conds.where("phone = " + phone + " AND type = 'gift'");
                 ArrayList<ExpenseRecord> expenseList = conds.get();
                 request.setAttribute("expenseList", expenseList);

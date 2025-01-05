@@ -165,7 +165,7 @@
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-600">Type:</span>
-                                <span class="font-medium <%= expense.getType().equals("gift") ? "text-purple-600" : "text-blue-600"%>">
+                                <span class="font-medium <%= expense.getType().equals("gift") ? "text-green-600" : "text-blue-600"%>">
                                     <%= expense.getType().substring(0, 1).toUpperCase() + expense.getType().substring(1)%>
                                 </span>
                             </div>
@@ -186,7 +186,6 @@
         </main>
     </body>
     <%
-        // Data untuk grafik
         int normalExpense = 0;
         int giftExpense = 0;
 
@@ -214,7 +213,7 @@
                     labels: ['Normal Expense', 'Gift Expense'],
                     datasets: [{
                             data: [normalExpense, giftExpense],
-                            backgroundColor: ['#3B82F6', '#8B5CF6'],
+                            backgroundColor: ['#3B82F6', '#2ECC71'],
                             hoverOffset: 4
                         }]
                 },
@@ -234,7 +233,6 @@
             });
         }
 
-        // Panggil fungsi updateIncomeChart dengan nilai dari backend
         updateExpenseChart(<%= normalExpense%>, <%= giftExpense%>);
     </script>
 </html>

@@ -18,20 +18,18 @@ public class BillController extends HttpServlet {
         String menu = request.getParameter("menu");
         Object phone = request.getSession().getAttribute("currPhone");
         if (request.getParameterMap().isEmpty()) {
-            // Menampilkan daftar tagihan
             request.setAttribute("title", "Daftar Tagihan");
             Bill bill = new Bill();
             bill.where("phone = " + phone);
             ArrayList<Bill> bills = bill.get();
             request.getSession().setAttribute("listbill", bills);
-            request.getRequestDispatcher("Pages/BillPage.jsp").forward(request, response);  // Memforward ke JSP
-            request.getSession().removeAttribute("msg");  // Menghapus pesan sebelumnya
+            request.getRequestDispatcher("Pages/BillPage.jsp").forward(request, response);
+            request.getSession().removeAttribute("msg");
         } else if ("add".equals(menu)) {
-            // Menampilkan form untuk menambah tagihan baru
             request.setAttribute("title", "Tambah Tagihan");
-            request.getRequestDispatcher("Pages/BillPage.jsp").forward(request, response);  // Menampilkan form tambah tagihan
+            request.getRequestDispatcher("Pages/BillPage.jsp").forward(request, response); 
         } else {
-            response.sendRedirect("bill");  // Redirect ke daftar tagihan jika menu tidak dikenali
+            response.sendRedirect("bill"); 
         }
     }
 
@@ -48,16 +46,15 @@ public class BillController extends HttpServlet {
             bill.setAmount(Double.parseDouble(request.getParameter("amount")));
             bill.setDueDate(request.getParameter("dueDate"));
             bill.setCategory(request.getParameter("category"));
-            bill.insert(); // Menyimpan tagihan ke database
+            bill.insert();
             ArrayList<Bill> bills = new Bill().get();
             request.getSession().setAttribute("listbill", bills);
             request.getSession().setAttribute("msg", "Tagihan berhasil ditambahkan");
             response.sendRedirect("bill");
         } else if ("del".equals(action)) {
-            // Menghapus tagihan berdasarkan ID
             Bill bill = new Bill().find(id);
             if (bill != null) {
-                bill.delete(); // Menghapus tagihan dari database
+                bill.delete();
                 request.getSession().setAttribute("msg", "Tagihan berhasil dihapus");
             } else {
                 request.getSession().setAttribute("msg", "Tagihan tidak ditemukan");

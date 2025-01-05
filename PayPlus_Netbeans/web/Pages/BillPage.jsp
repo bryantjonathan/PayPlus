@@ -12,7 +12,6 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://unpkg.com/feather-icons"></script>
         <style>
-            /* General Reset */
             * {
                 margin: 0;
                 padding: 0;
@@ -28,22 +27,18 @@
                 margin: 0 auto;
             }
 
-            /* Utility Classes */
             .text-right {
                 text-align: right;
             }
 
-            /* Button Styles */
             button {
                 cursor: pointer;
             }
 
-            /* Custom Shadows */
             .shadow-xs {
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             }
 
-            /* Flexbox Layout for Bill Item */
             .bill-item {
                 display: flex;
                 justify-content: space-between;
@@ -51,11 +46,10 @@
                 margin-bottom: 1rem;
                 padding: 10px;
                 border-bottom: none;
-                color: #eb1e1e; /* Red color for trash icon */
+                color: #eb1e1e;
                 cursor: pointer;
             }
 
-            /* Notification Container */
             .notification-container {
                 position: fixed;
                 bottom: 20px;
@@ -69,13 +63,12 @@
                 gap: 10px;
             }
 
-            /* Notification Card */
             .notification-card {
                 display: flex;
                 align-items: flex-start;
                 gap: 10px;
                 background-color: #fff;
-                border-left: 5px solid #4f46e5; /* Default border color */
+                border-left: 5px solid #4f46e5; 
                 border-radius: 8px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 padding: 12px 16px;
@@ -83,16 +76,15 @@
                 transition: opacity 0.3s ease, transform 0.3s ease;
             }
 
-            /* Success and Overdue Styles */
+            
             .notification-card.reminder {
-                border-left-color: #3b82f6; /* Blue for reminders */
+                border-left-color: #3b82f6; 
             }
 
             .notification-card.overdue {
-                border-left-color: #dc2626; /* Red for overdue */
+                border-left-color: #dc2626;
             }
 
-            /* Text Styles */
             .notification-card .notification-content {
                 flex: 1;
             }
@@ -128,10 +120,9 @@
 
             .bill-item.overdue {
                 background-color: #fef2f2;
-                border-left: 4px solid #e53e3e; /* Merah untuk overdue */
+                border-left: 4px solid #e53e3e; 
             }
 
-            /* Slide In Animation */
             @keyframes slideIn {
                 from {
                     opacity: 0;
@@ -178,7 +169,6 @@
             <main class="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold mb-8 text-gray-800">Upcoming Bills</h1>
 
-                <!-- Daftar Tagihan -->
                 <section class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
                     <h2 class="text-xl font-semibold text-gray-700 mb-4">Upcoming Bills</h2>
                     <ul class="space-y-3">
@@ -242,7 +232,6 @@
                     </ul>
                 </section>
 
-                <!-- Form Tambah Tagihan -->
                 <section class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
                     <h2 class="text-xl font-semibold text-gray-700 mb-4">Add New Bill</h2>
                     <form method="POST" action="bill?action=add">
@@ -288,10 +277,8 @@
             </main>
         </div>
 
-        <!-- Notification Container -->
         <div class="notification-container" id="notificationContainer"></div>
 
-        <!-- JavaScript Inline -->
         <script src="${pageContext.request.contextPath}/Pages/extendbill/Bill.js"></script>
     </body>
 

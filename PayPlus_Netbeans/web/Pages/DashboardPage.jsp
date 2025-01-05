@@ -8,7 +8,7 @@
 <%@page import="models.Savings"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="models.User, java.sql.ResultSet, javax.servlet.http.HttpSession"%>
+<%@page import="models.User, models.ExpenseRecord, java.sql.ResultSet, javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +22,6 @@
         <script src="https://unpkg.com/feather-icons"></script>
         <link rel="stylesheet" href="DasboardPage.css">
         <style>
-            /* Custom styles for dropdown */
             .dropdown {
                 display: none;
                 position: absolute;
@@ -55,11 +54,11 @@
                         </div>
                         <div class="flex items-center space-x-4">
                             <%
-                            User user = new User();
-                            user = user.find(request.getSession().getAttribute("currPhone").toString());
+                                User user = new User();
+                                user = user.find(request.getSession().getAttribute("currPhone").toString());
                             %>
                             <div class="relative">
-                                <img id="profilePhoto" src="https://i.pravatar.cc/40?img=68" alt="Profile"
+                                <img id="profilePhoto" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Profile"
                                      class="w-10 h-10 rounded-full border-2 border-indigo-500 cursor-pointer">
                                 <div
                                     class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white">
@@ -69,12 +68,11 @@
                                     <div class="px-4 py-2 border-b">
                                         <p class="text-sm font-medium text-gray-900"><%=user.getName()%></p>
                                         <p class="text-xs text-gray-500">Account #: <%=user.getPhone()%></p>
-                                        <p class="text-xs font-medium <%= 
-                                            user.getRole().equalsIgnoreCase("gold") ? "text-yellow-500" :
-                                            user.getRole().equalsIgnoreCase("silver") ? "text-gray-500" :
-                                            user.getRole().equalsIgnoreCase("bronze") ? "text-orange-500" :
-                                            "text-black" %>">
-                                            Member <%= user.getRole() %>
+                                        <p class="text-xs font-medium <%=user.getRole().equalsIgnoreCase("gold") ? "text-yellow-500"
+                                                : user.getRole().equalsIgnoreCase("silver") ? "text-gray-500"
+                                                : user.getRole().equalsIgnoreCase("bronze") ? "text-orange-500"
+                                                : "text-black"%>">
+                                            Member <%= user.getRole()%>
                                         </p>
 
                                     </div>
@@ -116,18 +114,17 @@
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center">
                             <i data-feather="arrow-up-right" class="w-4 h-4 mr-1"></i>
-                            <span class="text-sm">Income: Rp. <%= income.get(0) == null ? 0 : String.format("%,.0f",income.get(0)) %></span>
+                            <span class="text-sm">Income: Rp. <%= income.get(0) == null ? 0 : String.format("%,.0f", income.get(0))%></span>
 
                         </div>
                         <div class="flex items-center">
                             <i data-feather="arrow-down-left" class="w-4 h-4 mr-1"></i>
-                            <span class="text-sm">Expense: Rp. <%= expense.get(0) == null ? 0 : String.format("%,.0f",expense.get(0)) %></span>
+                            <span class="text-sm">Expense: Rp. <%= expense.get(0) == null ? 0 : String.format("%,.0f", expense.get(0))%></span>
                         </div>
                     </div>
                 </div>
 
                 <%
-                    // Retrieve the list of savings from session
                     ArrayList<Savings> listTabungan = (ArrayList<Savings>) request.getSession().getAttribute("list");
                     double totalCollected = 0;
 
@@ -137,7 +134,7 @@
                         }
                     }
                 %>
-                
+
                 <%
                     ArrayList<Bill> listBill = (ArrayList<Bill>) request.getSession().getAttribute("listbill");
                     double totalBill = 0;
@@ -202,13 +199,12 @@
                             </div>
                             <div class="space-y-4">
                                 <%
-                                    int b = 0; // Inisialisasi indeks
+                                    int b = 0;
                                     if (bills != null && !bills.isEmpty()) {
                                         for (Bill bill : bills) {
                                             if (b == 3) {
-                                                break; // Batasi hanya 3 tagihan
+                                                break;
                                             }
-                                            // Tentukan ikon berdasarkan kategori
                                             String category = bill.getCategory();
                                             String categoryIcon = "";
                                             switch (category) {
@@ -231,26 +227,24 @@
                                                     categoryIcon = "heart";
                                                     break;
                                                 default:
-                                                    categoryIcon = "file"; // Default ikon
+                                                    categoryIcon = "file";
                                                     break;
                                             }
                                 %>
                                 <div class="flex items-center justify-between">
-                                    <!-- Ikon -->
                                     <div class="flex items-center">
                                         <i data-feather="<%= categoryIcon%>" class="mr-3 text-gray-500"></i>
                                         <span class="text-gray-700"><%= bill.getName()%></span>
                                     </div>
-                                    <!-- Informasi Tagihan -->
                                     <div class="text-right">
                                         <p class="text-gray-700 font-semibold">Rp <%= String.format("%,.0f", bill.getAmount())%></p>
                                         <p class="text-sm text-gray-500">Due on <%= bill.getDueDate()%></p>
                                     </div>
                                 </div>
                                 <%
-                                            b++;
-                                        }
-                                    } else {
+                                        b++;
+                                    }
+                                } else {
                                 %>
                                 <div class="flex justify-between mb-1">
                                     <span class="text-gray-700">No upcoming bills.</span>
@@ -264,7 +258,6 @@
                     <a href="savings">
                         <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
                             <%
-                                
                                 ArrayList<Savings> saves = (ArrayList<Savings>) request.getSession().getAttribute("list");
 
                             %>
@@ -275,7 +268,7 @@
                             <div class="space-y-4">
                                 <%  int i;
                                     i = 0;
-                                    if (saves.size()>0) {
+                                    if (saves.size() > 0) {
                                         double progress = (((double) saves.get(i).getTerkumpul() / saves.get(i).getTarget()) * 100);
                                         if (progress > 100) {
                                             progress = 100;
@@ -317,10 +310,66 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
+                    <%
+                        ArrayList<ExpenseRecord> transfers = (ArrayList<ExpenseRecord>) request.getAttribute("dataTransfer");
+                    %>
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4">Recent Transfers</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Date</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        From</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        To</th>
+                                    <th
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <%
+                                    int j = 0;
+                                    for (ExpenseRecord transfer : transfers) {
+                                        User find = user.find(String.valueOf(transfer.getReceiverPhone()));
+                                        if (transfers != null) {
+                                            if (j == 3) {
+                                                break;
+                                            }
+                                %>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= transfer.getDate()%></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Self</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"><%= find.getName()%></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">Rp. <%= String.format("%,.0f", (double) transfer.getAmount())%>
+                                    </td>
+                                </tr>
+                                <%
+                                    j++;
+                                } else {
+                                %>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">You have no transfers.</span>
+                            </div>
+                            <%}%>
+                            <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <a href="Expense" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">View All Transfers</a>
+                    </div>
+                </div>
             </main>
         </div>
         <script>
-            // Dropdown toggle
             const profilePhoto = document.getElementById('profilePhoto');
             const profileDropdown = document.getElementById('profileDropdown');
 
@@ -328,14 +377,12 @@
                 profileDropdown.classList.toggle('show');
             });
 
-            // Close dropdown when clicking outside
             document.addEventListener('click', (event) => {
                 if (!profilePhoto.contains(event.target) && !profileDropdown.contains(event.target)) {
                     profileDropdown.classList.remove('show');
                 }
             });
 
-            // Load Feather Icons
             feather.replace();
         </script>
     </body>

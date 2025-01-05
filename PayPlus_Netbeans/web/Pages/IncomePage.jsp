@@ -42,12 +42,12 @@
                         </a>
                     </div>
                     <nav class="hidden sm:flex space-x-4">
-                      <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
+                        <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
                         <a href="Transfer" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
                         <a href="savings" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Savings</a>
                         <a href="bill" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Bills</a>
                         <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
-                        
+
                     </nav>
                     <div class="sm:hidden">
                         <button id="menuToggle" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">
@@ -67,23 +67,26 @@
                 ArrayList<Object> p = dataIncome.get(0);
             %>
             <h1 class="text-3xl font-bold mb-8 text-gray-800">Income Overview</h1>
+            <div class="grid gap-6 mb-8 md:grid-cols-1 xl:grid-cols-1">
 
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-                <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
+                <div class="flex items-center justify-center p-4 bg-white rounded-lg shadow-xs">
                     <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                              d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2-2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                              clip-rule="evenodd"></path>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="1 1 22 22">
+                        <path fill-rule="evenodd" d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M2 11a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7Zm7.5 1a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z" clip-rule="evenodd"/>
+                        <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/>
                         </svg>
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                        <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(0) == null ? 0 : String.format("%,.0f",p.get(0)) %></p>
+                        <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(0) == null ? 0 : String.format("%,.0f", p.get(0))%></p>
                     </div>
                 </div>
+            </div>
+            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
-                    <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
+                    <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path
                             d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
@@ -96,7 +99,7 @@
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
-                    <div class="p-3 mr-4 text-purple-500 bg-purple-100 rounded-full">
+                    <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
@@ -104,11 +107,11 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Normal Income</p>
-                        <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(2) == null ? 0 : String.format("%,.0f",p.get(2)) %></p>
+                        <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(2) == null ? 0 : String.format("%,.0f", p.get(2))%></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
-                    <div class="p-3 mr-4 text-pink-500 bg-pink-100 rounded-full">
+                    <div class="p-3 mr-4 text-purple-500 bg-purple-100 rounded-full">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                               d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z"
@@ -118,7 +121,20 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Gift Income</p>
-                        <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(3) == null ? 0 : String.format("%,.0f",p.get(3)) %></p>
+                        <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(3) == null ? 0 : String.format("%,.0f", p.get(3))%></p>
+                    </div>
+                </div>
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
+                    <div class="p-3 mr-4 text-yellow-500 bg-yellow-100 rounded-full">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M12 14a3 3 0 0 1 3-3h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4a3 3 0 0 1-3-3Zm3-1a1 1 0 1 0 0 2h4v-2h-4Z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M12.293 3.293a1 1 0 0 1 1.414 0L16.414 6h-2.828l-1.293-1.293a1 1 0 0 1 0-1.414ZM12.414 6 9.707 3.293a1 1 0 0 0-1.414 0L5.586 6h6.828ZM4.586 7l-.056.055A2 2 0 0 0 3 9v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2h-4a5 5 0 0 1 0-10h4a2 2 0 0 0-1.53-1.945L17.414 7H4.586Z" clip-rule="evenodd"/>
+
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="mb-2 text-sm font-medium text-gray-600">TopUp Income</p>
+                        <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(4) == null ? 0 : String.format("%,.0f", p.get(4))%></p>
                     </div>
                 </div>
             </div>
@@ -161,13 +177,14 @@
                         <div class="space-y-2">
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-600">Sender:</span>
-                                <span class="font-medium text-gray-800"><%= user.getName() %></span>
+                                <span class="font-medium text-gray-800"><%= user.getName()%></span>
                             </div>
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-600">Type:</span>
-                                <span class="font-medium <%= income.getType().equals("gift") ? "text-purple-600" : "text-blue-600"%>">
+                                <span class="font-medium <%= income.getType().equals("gift") ? "text-purple-600" : (income.getType().equals("topup") ? "text-green-600" : "text-blue-600")%>">
                                     <%= income.getType().substring(0, 1).toUpperCase() + income.getType().substring(1)%>
                                 </span>
+
                             </div>
                             <% if ("gift".equals(income.getType()) && income.getMessage() != null) {%>
                             <div class="mt-4">
@@ -180,7 +197,7 @@
                     <a href="IncomePage.jsp"></a>
                 </div>
                 <% }
-    } else { %>
+            } else { %>
                 <p>No income records found.</p>
                 <% } %>
             </div>
@@ -188,22 +205,23 @@
         </main>
     </body>
     <%
-        // Data untuk grafik
         int normalIncome = 0;
         int giftIncome = 0;
-
+        int topupIncome = 0;
         if (incomes != null) {
             for (IncomeRecord income : incomes) {
                 if ("normal".equalsIgnoreCase(income.getType())) {
                     normalIncome += income.getAmount();
                 } else if ("gift".equalsIgnoreCase(income.getType())) {
                     giftIncome += income.getAmount();
+                } else if ("topup".equalsIgnoreCase(income.getType())) {
+                    topupIncome += income.getAmount();
                 }
             }
         }
     %>
     <script>
-        function updateIncomeChart(normalIncome, giftIncome) {
+        function updateIncomeChart(normalIncome, giftIncome, topupIncome) {
             const ctx = document.getElementById('incomeChart').getContext('2d');
 
             if (window.incomeChart instanceof Chart) {
@@ -213,10 +231,10 @@
             window.incomeChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Normal Income', 'Gift Income'],
+                    labels: ['Normal Income', 'Gift Income', 'TopUp Income'],
                     datasets: [{
-                            data: [normalIncome, giftIncome],
-                            backgroundColor: ['#3B82F6', '#8B5CF6'],
+                            data: [normalIncome, giftIncome, topupIncome],
+                            backgroundColor: ['#3B82F6', '#8B5CF6', '#F1C40F'],
                             hoverOffset: 4
                         }]
                 },
@@ -236,7 +254,6 @@
             });
         }
 
-        // Panggil fungsi updateIncomeChart dengan nilai dari backend
-     updateIncomeChart(<%= normalIncome%>, <%= giftIncome%>);
+        updateIncomeChart(<%= normalIncome%>, <%= giftIncome%>,<%=topupIncome%>);
     </script>
 </html>

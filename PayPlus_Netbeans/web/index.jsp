@@ -51,11 +51,7 @@
                 <div class="logo">
                     <img id="logo" src="Images\logo.png" alt="PayPlus Logo">
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="text-gray-600 hover:text-indigo-500 transition duration-300">Features</a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-500 transition duration-300">About</a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-500 transition duration-300">Contact</a>
-                </div>
+                
                 <div class="hidden md:block">
                     <a href="User?menu=login" class="bg-indigo-500 text-white px-6 py-2 rounded-full hover:bg-indigo-600 transition duration-300">Log in</a>
                 </div>
@@ -84,9 +80,7 @@
                         <a href="User?menu=signup" class="bg-indigo-500 text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-600 transition duration-300 text-center">
                             Get Started
                         </a>
-                        <a href="#" class="border border-indigo-500 text-indigo-500 font-semibold px-8 py-3 rounded-full hover:bg-indigo-50 transition duration-300 text-center">
-                            Learn more
-                        </a>
+                        
                     </div>
                     <div class="mt-8 flex items-center space-x-4">
                         <div class="flex -space-x-2">
@@ -187,11 +181,7 @@
                 <span class="text-2xl font-semibold">PayPlus</span>
                 <p class="mt-2 text-sm text-gray-400">&copy; 2024 PayPlus. All rights reserved.</p>
             </div>
-            <div class="flex justify-center md:justify-end space-x-6">
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a>
-            </div>
+            
         </div>
     </footer>
     <script>
