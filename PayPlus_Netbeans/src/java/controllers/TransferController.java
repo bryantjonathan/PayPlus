@@ -55,11 +55,15 @@ public class TransferController extends HttpServlet {
             String transferType = request.getParameter("transferType");
             String messagee = request.getParameter("message");
             if (checkBalance >= 0) {
+                    
                     income.setDate(formattedDate);
                     income.setPhone(Long.parseLong(phone));
                     income.setSender(Long.parseLong(currPhone));
                     income.setType(transferType);
-                    income.setMessage(messagee);
+                    if(transferType.equals("normal")){
+                        messagee = null;
+                    }
+                    income.setMessage(messagee);  
                     income.setAmount(Integer.parseInt(request.getParameter("amount")));
                     income.insert();
                     

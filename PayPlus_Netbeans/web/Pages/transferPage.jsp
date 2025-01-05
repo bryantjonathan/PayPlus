@@ -104,7 +104,7 @@
                         <div id="messageContainer" class="hidden">
                             <label for="message" class="block text-sm font-medium text-gray-600">Message</label>
                             <input type="text" id="message" name="message"
-                                   class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                   class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"required>
                         </div>
                         <button type="submit"
                                 class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
