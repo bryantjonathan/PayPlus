@@ -92,12 +92,11 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 relative">
-                    <img src="Images\ImageDasboard.png" alt="Finance Dashboard" class="rounded-lg shadow-2xl animate-float">
+                    <img src="Images\dasboard.png" alt="Finance Dashboard" class="rounded-lg shadow-2xl animate-float">
                 </div>
             </div>
         </section>
 
-        <!-- Additional sections remain the same, with image and link paths updated using JSP -->
         <section class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-12">Why Choose PayPlus?</h2>
@@ -185,7 +184,7 @@
         </div>
     </footer>
     <script>
-        // Mobile menu toggle
+    
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.querySelector('.md\:flex');
 
@@ -193,7 +192,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // CTA button animation
+    
         const ctaButton = document.getElementById('cta-button');
 
         ctaButton.addEventListener('mouseover', () => {
@@ -204,7 +203,7 @@
             ctaButton.classList.remove('scale-105');
         });
 
-        // Scroll animation for header
+       
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
