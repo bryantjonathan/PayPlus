@@ -4,7 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/Settings.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/User.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/DashboardPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/DashboardController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/SilverUser.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/UserController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/topupPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/Savings.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/TransferController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/SavingsPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/SignUpPage.jsp</file>
             <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/SettingController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/GoldUser.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/LoginPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/transferPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/SavingsServlet.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/BronzeUser.java</file>
         </group>
     </open-files>
 </project-private>

@@ -23,7 +23,7 @@ public class BillController extends HttpServlet {
             Bill bill = new Bill();
             bill.where("phone = " + phone);
             ArrayList<Bill> bills = bill.get();
-            request.getSession().setAttribute("list", bills);
+            request.getSession().setAttribute("listbill", bills);
             request.getRequestDispatcher("Pages/BillPage.jsp").forward(request, response);  // Memforward ke JSP
             request.getSession().removeAttribute("msg");  // Menghapus pesan sebelumnya
         } else if ("add".equals(menu)) {
@@ -50,7 +50,7 @@ public class BillController extends HttpServlet {
             bill.setCategory(request.getParameter("category"));
             bill.insert(); // Menyimpan tagihan ke database
             ArrayList<Bill> bills = new Bill().get();
-            request.getSession().setAttribute("list", bills);
+            request.getSession().setAttribute("listbill", bills);
             request.getSession().setAttribute("msg", "Tagihan berhasil ditambahkan");
             response.sendRedirect("bill");
         } else if ("del".equals(action)) {

@@ -1,5 +1,6 @@
 package controllers;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import models.User;
 import models.SilverUser;
 import models.BronzeUser;
+import models.IncomeRecord;
+import models.ExpenseRecord;
 
 @WebServlet(name = "TransferController", urlPatterns = {"/Transfer"})
 public class TransferController extends HttpServlet {
@@ -37,19 +40,44 @@ public class TransferController extends HttpServlet {
                 request.getRequestDispatcher("Pages/transferPage.jsp").forward(request, response);
             }
         } else if ("send".equals(action)) {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = today.format(formatter);
+            
             User user = new User();
             User currUser = new User();
+            IncomeRecord income = new IncomeRecord();
+            ExpenseRecord expense = new ExpenseRecord();
             String currPhone = (String) request.getSession().getAttribute("currPhone");
             currUser = currUser.find(currPhone);
             String phone = request.getParameter("phone");
             double checkBalance = currUser.getBalance() - Double.parseDouble(request.getParameter("amount"));
+            String transferType = request.getParameter("transferType");
+            String messagee = request.getParameter("message");
             if (checkBalance >= 0) {
+                    income.setDate(formattedDate);
+                    income.setPhone(Long.parseLong(phone));
+                    income.setSender(Long.parseLong(currPhone));
+                    income.setType(transferType);
+                    income.setMessage(messagee);
+                    income.setAmount(Integer.parseInt(request.getParameter("amount")));
+                    income.insert();
+                    
+                    expense.setDate(formattedDate);
+                    expense.setPhone(Long.parseLong(currPhone));
+                    expense.setReceiver(Long.parseLong(phone));
+                    expense.setType(transferType);
+                    expense.setMessage(messagee);
+                    expense.setAmount(Integer.parseInt(request.getParameter("amount")));
+                    expense.insert();
+                    
                 if (currUser.getRole().equals("gold")) {
                     user = user.find(phone);
                     user.setBalance(user.getBalance() + Double.parseDouble(request.getParameter("amount")));
                     currUser.setBalance(currUser.getBalance() - Double.parseDouble(request.getParameter("amount")));
                     currUser.update();
                     user.update();
+                    
                     request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
                     request.setAttribute("saldo", "Transfer Succeeded.");
                 } else if (currUser.getRole().equals("silver")) {
@@ -59,6 +87,7 @@ public class TransferController extends HttpServlet {
                     currUser.setBalance(currUser.getBalance() - Double.parseDouble(request.getParameter("amount")) - userType.getAdminFee());
                     currUser.update();
                     user.update();
+                    
                     request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
                     request.setAttribute("saldo", "Transfer Succeeded.");
                 } else if (currUser.getRole().equals("bronze")) {
@@ -68,6 +97,7 @@ public class TransferController extends HttpServlet {
                     currUser.setBalance(currUser.getBalance() - Double.parseDouble(request.getParameter("amount")) - userType.getAdminFee());
                     currUser.update();
                     user.update();
+                    
                     request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
                     request.setAttribute("saldo", "Transfer Succeeded.");
                 }

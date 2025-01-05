@@ -42,11 +42,12 @@
                         </a>
                     </div>
                     <nav class="hidden sm:flex space-x-4">
-                        <a href="Dashboard"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                        <a href="Expense"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
+                      <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
+                        <a href="Transfer" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
+                        <a href="savings" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Savings</a>
+                        <a href="bill" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Bills</a>
+                        <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                        
                     </nav>
                     <div class="sm:hidden">
                         <button id="menuToggle" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">
@@ -78,7 +79,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Total Income</p>
-                        <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp. <%=p.get(0)%></p>
+                        <p id="totalIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(0) == null ? 0 : String.format("%,.0f",p.get(0)) %></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -103,7 +104,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Normal Income</p>
-                        <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp. <%=p.get(2)%></p>
+                        <p id="normalIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(2) == null ? 0 : String.format("%,.0f",p.get(2)) %></p>
                     </div>
                 </div>
                 <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
@@ -117,7 +118,7 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600">Gift Income</p>
-                        <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp. <%=p.get(3)%></p>
+                        <p id="giftIncome" class="text-lg font-semibold text-gray-700">Rp. <%= p.get(3) == null ? 0 : String.format("%,.0f",p.get(3)) %></p>
                     </div>
                 </div>
             </div>
@@ -154,7 +155,7 @@
                 <div class="bg-white shadow rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg income-card">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-gray-800">Rp. <%= income.getAmount()%></span>
+                            <span class="text-2xl font-bold text-gray-800">Rp. <%= String.format("%,.0f", (double) income.getAmount())%></span>
                             <span class="text-sm font-medium text-gray-500"><%= income.getDate()%></span>
                         </div>
                         <div class="space-y-2">

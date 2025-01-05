@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Images/logoTab.png" type="image/icon">
     <title>Account Settings - PayPlus</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -64,7 +65,14 @@
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-medium text-gray-900">Profile Picture</h3>
-                                    <p class="text-xs font-medium text-yellow-500">Member <%=user.getRole()%></p>
+                                    <p class="text-xs font-medium <%= 
+                                        user.getRole().equalsIgnoreCase("gold") ? "text-yellow-500" :
+                                        user.getRole().equalsIgnoreCase("silver") ? "text-gray-500" :
+                                        user.getRole().equalsIgnoreCase("bronze") ? "text-orange-500" :
+                                        "text-black" %>">
+                                        Member <%= user.getRole() %>
+                                    </p>
+
                                 </div>
                             </div>
 
@@ -72,13 +80,6 @@
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
                                 <input type="text" id="name" name="name" value="<%=user.getName()%>"
-                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            </div>
-
-                            <!-- Phone Number -->
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                                <input type="text" id="phone" name="phone" value="<%=user.getPhone()%>"
                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div>

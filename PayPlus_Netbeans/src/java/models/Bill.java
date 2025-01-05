@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class Bill extends Model<Bill> {
     private int id;
     private String name;
-    private long phone;
+    private Long phone;
     private String dueDate;
     private double amount;
     private String category;
@@ -16,7 +16,7 @@ public class Bill extends Model<Bill> {
         this.primaryKey = "id";
     }
 
-    public Bill(int id, long phone, String name, double amount, String dueDate, String category) {
+    public Bill(int id, Long phone, String name, double amount, String dueDate, String category) {
         this.table = "bill";
         this.primaryKey = "id";
         this.id = id;
@@ -44,11 +44,11 @@ public class Bill extends Model<Bill> {
         return null;
     }
 
-    public long getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 

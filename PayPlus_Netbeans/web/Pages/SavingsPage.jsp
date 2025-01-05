@@ -8,6 +8,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Images/logoTab.png" type="image/icon">
         <title>Savings Page</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
@@ -22,14 +23,12 @@
                         </a>
                     </div>
                     <nav class="hidden sm:flex space-x-4">
-                        <a href="Dashboard"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                        <a href="Income"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
-                        <a href="Expense"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
-                        <a href="#"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
+                        <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
+                        <a href="Transfer" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
+                        
+                        <a href="bill" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Bills</a>
+                        <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                        <a href="Income" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Income</a>
                     </nav>
                 </div>
             </div>
@@ -93,7 +92,8 @@
             <div id="savingsContainer" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <%
                     ArrayList<Savings> saves = (ArrayList<Savings>) request.getSession().getAttribute("list");
-                    for (Savings s : saves) {
+                    if (saves.size() > 0) {
+                        for (Savings s : saves) {
                 %>
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= s.getNama()%></h3>
@@ -106,7 +106,7 @@
                         <p class="text-sm font-medium text-gray-500">Amount Collected</p>
                         <p class="text-lg font-semibold text-green-600">Rp <%= String.format("%,.0f", (double) s.getTerkumpul())%></p>
                     </div>
-                    <% if (s.getTarget() != s.getTerkumpul() && s.getTarget() > s.getTerkumpul()) { %>
+                    <% if (s.getTarget() != s.getTerkumpul() && s.getTarget() > s.getTerkumpul()) {%>
                     <a href="savings?m=addtosavings&id=<%= s.getId()%>">
                         <button class="mt-4 bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600">
                             Add to Savings
@@ -117,7 +117,7 @@
                             Delete
                         </button>
                     </a>
-                    <% } else { %>
+                    <% } else {%>
                     <p class="text-lg font-semibold text-green-600">Target achieved!</p>
                     <a href="savings?m=delete&id=<%= s.getId()%>">
                         <button class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-800">
@@ -128,7 +128,12 @@
                 </div>
                 <%
                     }
+                } else {
                 %>
+                <div class="flex justify-between mb-1">
+                    <span class="text-gray-700">You have no savings.</span>
+                </div>
+                <% } %>
             </div>
         </main>
     </body>

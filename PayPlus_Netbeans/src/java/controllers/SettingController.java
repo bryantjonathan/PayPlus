@@ -26,7 +26,7 @@ public class SettingController extends HttpServlet {
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
+        
         String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
         String confirmPassword = request.getParameter("confirmPassword");
@@ -38,7 +38,7 @@ public class SettingController extends HttpServlet {
             if(currentPassword.isEmpty()&&newPassword.isEmpty()&& currentPassword.isEmpty()){
                 currUser.setName(name);
                 currUser.setEmail(email);
-                currUser.setPhone(Long.parseLong(phone));
+                
                 currUser.update();
                 request.setAttribute("alert", "Profile updated successfully!");
                 request.setAttribute("warna", "green");
@@ -57,7 +57,7 @@ public class SettingController extends HttpServlet {
                     }else{
                         currUser.setName(name);
                         currUser.setEmail(email);
-                        currUser.setPhone(Long.parseLong(phone));
+                        
                         currUser.setPassword(confirmPassword);
                         currUser.update();
                         request.setAttribute("alert", "Profile updated successfully!");

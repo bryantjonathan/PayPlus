@@ -1,5 +1,6 @@
 package controllers;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.User;
+import models.IncomeRecord;
 
 @WebServlet(name = "UserController", urlPatterns = {"/User"})
 public class UserController extends HttpServlet {
@@ -82,11 +84,24 @@ public class UserController extends HttpServlet {
             }
 
         } else if ("topup".equals(action)) {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = today.format(formatter);
             User currUser = new User();
             String currPhone = (String) request.getSession().getAttribute("currPhone");
             currUser = currUser.find(currPhone);
             currUser.setBalance(currUser.getBalance() + Double.parseDouble(request.getParameter("topup")));
             currUser.update();
+            
+            IncomeRecord income = new IncomeRecord();
+            income.setDate(formattedDate);
+            income.setPhone(Long.parseLong(currPhone));
+            income.setSender(Long.parseLong(currPhone));
+            income.setType("topup");
+            income.setMessage(null);
+            income.setAmount(Integer.parseInt(request.getParameter("topup")));
+            income.insert();
+            
             request.getSession().setAttribute("currBalance", (int) currUser.getBalance());
             request.setAttribute("saldo", "Top up Succeeded.");
             request.getRequestDispatcher("Pages/topupPage.jsp").forward(request, response);

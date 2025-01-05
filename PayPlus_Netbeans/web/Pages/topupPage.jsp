@@ -24,14 +24,12 @@
                         </a>
                     </div>
                     <nav class="hidden sm:flex space-x-4">
-                        <a href="Dashboard"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Savings</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Bills</a>
-                        <a href="Expense"
-                           class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Income</a>
+                        <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
+                        <a href="Transfer" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
+                        <a href="savings" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Savings</a>
+                        <a href="bill" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Bills</a>
+                        <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                        <a href="Income" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Income</a>
                     </nav>
                     <div class="sm:hidden">
                         <button id="menuToggle" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">
@@ -43,22 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sm:hidden hidden">
-                <nav class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#"
-                       class="block px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                    <a href="#"
-                       class="block px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
-                    <a href="#"
-                       class="block px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200">Savings</a>
-                    <a href="#"
-                       class="block px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200">Income</a>
-                    <a href="#"
-                       class="block px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
-                    <a href="#"
-                       class="block px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
-                </nav>
-            </div>
+     
         </header>
 
         <main class="flex items-center justify-center min-h-[calc(100vh-64px)]">

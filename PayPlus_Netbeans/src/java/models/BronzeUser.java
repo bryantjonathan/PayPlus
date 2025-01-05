@@ -2,7 +2,7 @@ package models;
 
 public class BronzeUser extends User implements HasAdminFee {
     private final double ADMIN_FEE = 2000;
-    private final int TOTAL_SAVINGS = 5;
+    private final int TOTAL_SAVINGS = 1;
     
     public BronzeUser() {
         super();

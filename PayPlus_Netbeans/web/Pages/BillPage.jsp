@@ -156,11 +156,12 @@
                             </a>
                         </div>
                         <nav class="hidden sm:flex space-x-4">
-                            <a href="Dashboard"
-                               class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                            <a href="Expense"
-                               class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
-                            <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
+                            <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
+                        <a href="Transfer" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
+                        <a href="savings" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Savings</a>
+                     
+                        <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                        <a href="Income" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Income</a>
                         </nav>
                         <div class="sm:hidden">
                             <button id="menuToggle" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">
@@ -182,7 +183,7 @@
                     <h2 class="text-xl font-semibold text-gray-700 mb-4">Upcoming Bills</h2>
                     <ul class="space-y-3">
                         <%
-                            ArrayList<Bill> bills = (ArrayList<Bill>) request.getSession().getAttribute("list");
+                            ArrayList<Bill> bills = (ArrayList<Bill>) request.getSession().getAttribute("listbill");
                             if (bills != null && !bills.isEmpty()) {
                                 for (Bill bill : bills) {
                                     if (bill != null) {
@@ -203,19 +204,22 @@
                                             case "Vehicle":
                                                 categoryIcon = "truck";
                                                 break;
+                                            case "Heart":
+                                                categoryIcon = "heart";
+                                                break;   
                                             default:
                                                 categoryIcon = "file";
                                                 break;
                                         }
                         %>
-                        <li class="flex justify-between items-center border-b border-gray-200 py-4 bill-item" data-due="<%= bill.getDueDate()%>">
+                        <li class="flex justify-between items-center border-b border-gray-200 py-4 bill-item">
                             <div class="flex items-center">
                                 <i data-feather="<%= categoryIcon%>" class="mr-3 text-gray-500"></i>
                                 <span class="text-gray-700"><%= bill.getName()%></span>
                             </div>
                             <div class="flex items-center space-x-6">
                                 <div class="flex flex-col items-end">
-                                    <p class="amount text-gray-700">Rp <%= (int) bill.getAmount()%></p>
+                                    <p class="amount text-gray-700">Rp <%= String.format("%,.0f", bill.getAmount())%></p>
                                     <p class="due-date text-sm" style="color: #4a5568;">Due on <%= bill.getDueDate()%></p>
                                 </div>
                                 <form method="POST" action="bill?action=del&id=<%= bill.getId()%>"
@@ -271,6 +275,7 @@
                                     <option value="Internet">Internet</option>
                                     <option value="Water">Water</option>
                                     <option value="Vehicle">Vehicle</option>
+                                    <option value="Heart">Health Asurance</option>
                                 </select>
                             </div>
                         </div>

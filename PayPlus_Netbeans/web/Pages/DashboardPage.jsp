@@ -4,6 +4,7 @@
     Author     : fauss
 --%>
 
+<%@page import="models.Bill"%>
 <%@page import="models.Savings"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -68,7 +69,14 @@
                                     <div class="px-4 py-2 border-b">
                                         <p class="text-sm font-medium text-gray-900"><%=user.getName()%></p>
                                         <p class="text-xs text-gray-500">Account #: <%=user.getPhone()%></p>
-                                        <p class="text-xs font-medium text-yellow-500">Member <%=user.getRole()%></p>
+                                        <p class="text-xs font-medium <%= 
+                                            user.getRole().equalsIgnoreCase("gold") ? "text-yellow-500" :
+                                            user.getRole().equalsIgnoreCase("silver") ? "text-gray-500" :
+                                            user.getRole().equalsIgnoreCase("bronze") ? "text-orange-500" :
+                                            "text-black" %>">
+                                            Member <%= user.getRole() %>
+                                        </p>
+
                                     </div>
                                     <a href="Setting" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Account
                                         Settings</a>
@@ -90,7 +98,7 @@
                     ArrayList<Object> income = dataIncome.get(0);
 
                 %>
-                <h1 class="text-3xl font-bold mb-8 text-gray-800">Welcome back, <%= request.getSession().getAttribute("currName")%>!</h1>
+                <h1 class="text-3xl font-bold mb-8 text-gray-800">Welcome back, <%= user.getName()%>!</h1>
 
                 <!-- Balance Card -->
                 <div class="balance-card rounded-xl p-6 mb-8 text-white">
@@ -108,11 +116,12 @@
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center">
                             <i data-feather="arrow-up-right" class="w-4 h-4 mr-1"></i>
-                            <span class="text-sm">Income: Rp <%= income.get(0)%></span>
+                            <span class="text-sm">Income: Rp. <%= income.get(0) == null ? 0 : String.format("%,.0f",income.get(0)) %></span>
+
                         </div>
                         <div class="flex items-center">
                             <i data-feather="arrow-down-left" class="w-4 h-4 mr-1"></i>
-                            <span class="text-sm">Expense: Rp <%= expense.get(0)%></span>
+                            <span class="text-sm">Expense: Rp. <%= expense.get(0) == null ? 0 : String.format("%,.0f",expense.get(0)) %></span>
                         </div>
                     </div>
                 </div>
@@ -128,6 +137,17 @@
                         }
                     }
                 %>
+                
+                <%
+                    ArrayList<Bill> listBill = (ArrayList<Bill>) request.getSession().getAttribute("listbill");
+                    double totalBill = 0;
+
+                    if (listBill != null) {
+                        for (Bill bill : listBill) {
+                            totalBill += bill.getAmount();
+                        }
+                    }
+                %>
                 <div class="grid gap-6 mb-8 md:grid-cols-2">
                     <div
                         class="flex items-center p-4 bg-white rounded-lg shadow-xs hover:shadow-md transition-shadow duration-300">
@@ -136,7 +156,7 @@
                         </div>
                         <div>
                             <p class="mb-2 text-sm font-medium text-gray-600">Total Savings</p>
-                            <p class="text-lg font-semibold text-gray-700">Rp <%= String.format("%,.0f", totalCollected)%></p>
+                            <p class="text-lg font-semibold text-gray-700">Rp. <%= String.format("%,.0f", totalCollected)%></p>
                         </div>
                     </div>
                     <div
@@ -146,7 +166,7 @@
                         </div>
                         <div>
                             <p class="mb-2 text-sm font-medium text-gray-600">Pending Bills</p>
-                            <p class="text-lg font-semibold text-gray-700">Rp 1,330.00</p>
+                            <p class="text-lg font-semibold text-gray-700">Rp. <%= String.format("%,.0f", totalBill)%></p>
                         </div>
                     </div>
                 </div>
@@ -172,49 +192,79 @@
 
                 <div class="grid gap-6 mb-8 md:grid-cols-2">
                     <a href="bill">
-
+                        <%
+                            ArrayList<Bill> bills = (ArrayList<Bill>) request.getSession().getAttribute("listbill");
+                        %>
                         <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
                             <div class="flex items-center justify-between mb-4">
-                                <h2 class="text-xl font-semibold text-gray-700 mb-4">Upcoming Bills</h2>
+                                <h2 class="text-xl font-semibold text-gray-700">Upcoming Bills</h2>
                                 <i data-feather="chevron-right" class="text-gray-500"></i>
                             </div>
-                            <ul class="space-y-3">
-                                <li class="flex justify-between items-center">
+                            <div class="space-y-4">
+                                <%
+                                    int b = 0; // Inisialisasi indeks
+                                    if (bills != null && !bills.isEmpty()) {
+                                        for (Bill bill : bills) {
+                                            if (b == 3) {
+                                                break; // Batasi hanya 3 tagihan
+                                            }
+                                            // Tentukan ikon berdasarkan kategori
+                                            String category = bill.getCategory();
+                                            String categoryIcon = "";
+                                            switch (category) {
+                                                case "Rent":
+                                                    categoryIcon = "home";
+                                                    break;
+                                                case "Electricity":
+                                                    categoryIcon = "zap";
+                                                    break;
+                                                case "Internet":
+                                                    categoryIcon = "wifi";
+                                                    break;
+                                                case "Water":
+                                                    categoryIcon = "droplet";
+                                                    break;
+                                                case "Vehicle":
+                                                    categoryIcon = "truck";
+                                                    break;
+                                                case "Heart":
+                                                    categoryIcon = "heart";
+                                                    break;
+                                                default:
+                                                    categoryIcon = "file"; // Default ikon
+                                                    break;
+                                            }
+                                %>
+                                <div class="flex items-center justify-between">
+                                    <!-- Ikon -->
                                     <div class="flex items-center">
-                                        <i data-feather="home" class="mr-3 text-gray-500"></i>
-                                        <span class="text-gray-700">Rent</span>
+                                        <i data-feather="<%= categoryIcon%>" class="mr-3 text-gray-500"></i>
+                                        <span class="text-gray-700"><%= bill.getName()%></span>
                                     </div>
+                                    <!-- Informasi Tagihan -->
                                     <div class="text-right">
-                                        <p class="text-gray-700 font-semibold">Rp 1,200.00</p>
-                                        <p class="text-sm text-gray-500">Due on Jul 1, 2023</p>
+                                        <p class="text-gray-700 font-semibold">Rp <%= String.format("%,.0f", bill.getAmount())%></p>
+                                        <p class="text-sm text-gray-500">Due on <%= bill.getDueDate()%></p>
                                     </div>
-                                </li>
-                                <li class="flex justify-between items-center">
-                                    <div class="flex items-center">
-                                        <i data-feather="zap" class="mr-3 text-gray-500"></i>
-                                        <span class="text-gray-700">Electricity</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-gray-700 font-semibold">Rp 80.00</p>
-                                        <p class="text-sm text-gray-500">Due on Jul 15, 2023</p>
-                                    </div>
-                                </li>
-                                <li class="flex justify-between items-center">
-                                    <div class="flex items-center">
-                                        <i data-feather="wifi" class="mr-3 text-gray-500"></i>
-                                        <span class="text-gray-700">Internet</span>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-gray-700 font-semibold">Rp 50.00</p>
-                                        <p class="text-sm text-gray-500">Due on Jul 20, 2023</p>
-                                    </div>
-                                </li>
-                            </ul>
+                                </div>
+                                <%
+                                            b++;
+                                        }
+                                    } else {
+                                %>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700">No upcoming bills.</span>
+                                </div>
+                                <%
+                                    }
+                                %>
+                            </div>
                         </div>
                     </a>
                     <a href="savings">
                         <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow duration-300">
                             <%
+                                
                                 ArrayList<Savings> saves = (ArrayList<Savings>) request.getSession().getAttribute("list");
 
                             %>
@@ -225,8 +275,8 @@
                             <div class="space-y-4">
                                 <%  int i;
                                     i = 0;
-                                    if (saves != null) {
-                                        double progress = (double) saves.get(i).getTerkumpul() / saves.get(i).getTarget() * 100;
+                                    if (saves.size()>0) {
+                                        double progress = (((double) saves.get(i).getTerkumpul() / saves.get(i).getTarget()) * 100);
                                         if (progress > 100) {
                                             progress = 100;
                                         }
@@ -241,7 +291,7 @@
                                         <span class="text-gray-600">Rp <%= String.format("%,.0f", (double) saves.get(i).getTerkumpul())%> / <%= String.format("%,.0f", (double) saves.get(i).getTarget())%></span>
                                     </div>
                                     <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-green-600 h-2.5 rounded-full" style="width: <%= progress%>"></div>
+                                        <div class="bg-green-600 h-2.5 rounded-full" style="width: <%= progress%>%"></div>
                                     </div>
                                 </div>
                                 <% i++;

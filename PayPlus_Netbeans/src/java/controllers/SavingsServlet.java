@@ -8,28 +8,47 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.BronzeUser;
+import models.GoldUser;
+import models.SilverUser;
+import models.User;
 
 @WebServlet(name = "SavingsServlet", urlPatterns = {"/savings"})
 public class SavingsServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String m = request.getParameter("m");
-        Object phone = request.getSession().getAttribute("currPhone");
+        String phoneNow = (String) request.getSession().getAttribute("currPhone");
+        int nTabungan = 0;
+        User userRightNow = new User();
+        userRightNow = userRightNow.find(phoneNow);
+        if (userRightNow.getRole().equals("bronze")) {
+            BronzeUser bUser = new BronzeUser();
+            nTabungan = bUser.getTotalSavings();
+        } else if (userRightNow.getRole().equals("silver")) {
+            SilverUser sUser = new SilverUser();
+            nTabungan = sUser.getTotalSavings();
+        } else {
+            GoldUser gUser = new GoldUser();
+            nTabungan = gUser.getTotalSavings();
+        }
+
         if (request.getParameterMap().isEmpty()) {
             Savings where = new Savings();
-            where.where("phone = " + phone);
+            where.where("phone = " + phoneNow);
             ArrayList<Savings> saves = where.get();
             request.getSession().setAttribute("list", saves);
             request.getRequestDispatcher("Pages/SavingsPage.jsp").forward(request, response);
         } else if (m.equals("add")) {
             Savings where = new Savings();
-            where.where("phone = " + phone);
+            where.where("phone = " + phoneNow);
             ArrayList<Savings> saves = where.get();
-            if (saves.size() < 6) {
+            if (saves.size() < nTabungan) {
                 request.getRequestDispatcher("Pages/AddSavings.jsp").forward(request, response);
             } else {
-                request.setAttribute("alert", "Tidak dapat menambahkan tabungan baru. Jumlah tabungan maksimal: 6.");
+                request.setAttribute("alert", "Tidak dapat menambahkan tabungan baru. Jumlah tabungan maksimal: " + nTabungan + ".");
                 request.getRequestDispatcher("Pages/SavingsPage.jsp").forward(request, response);
             }
         } else if (m.equals("addtosavings")) {
@@ -39,6 +58,14 @@ public class SavingsServlet extends HttpServlet {
             String id = request.getParameter("id");
             Savings s = new Savings();
             s = s.find(id);
+            User userNow = new User();
+            userNow = userNow.find(phoneNow);
+            double transferBalance = (double) s.getTerkumpul();
+            double balanceNow = userNow.getBalance();
+            double transferredBalance = transferBalance + balanceNow;
+            userNow.setBalance(transferredBalance);
+            userNow.update();
+            request.getSession().setAttribute("currBalance", (int) userNow.getBalance());
             s.delete();
             ArrayList<Savings> saves = new Savings().get();
             request.getSession().setAttribute("list", saves);
@@ -53,7 +80,7 @@ public class SavingsServlet extends HttpServlet {
 
         if ("add".equals(action)) {
             Savings s = new Savings();
-            s.setPhone(Long.parseLong((String)request.getSession().getAttribute("currPhone")));
+            s.setPhone(Long.parseLong((String) request.getSession().getAttribute("currPhone")));
             s.setNama(request.getParameter("nama"));
             s.setDeskripsi(request.getParameter("deskripsi"));
             s.setTarget(Long.parseLong(request.getParameter("target")));
@@ -73,5 +100,5 @@ public class SavingsServlet extends HttpServlet {
             request.getSession().setAttribute("list", saves);
             response.sendRedirect("savings");
         }
-    }  
+    }
 }

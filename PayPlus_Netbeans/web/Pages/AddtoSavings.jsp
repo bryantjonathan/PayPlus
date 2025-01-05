@@ -22,9 +22,11 @@
                 </div>
                 <nav class="hidden sm:flex space-x-4">
                     <a href="Dashboard" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Dashboard</a>
-                    <a href="Income" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Incomes</a>
-                    <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Reports</a>
+                        <a href="Transfer" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Transfer</a>
+                        
+                        <a href="bill" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Bills</a>
+                        <a href="Expense" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Expenses</a>
+                        <a href="Income" class="text-gray-600 hover:text-gray-800 transition-colors duration-200">Income</a>
                 </nav>
             </div>
         </div>
