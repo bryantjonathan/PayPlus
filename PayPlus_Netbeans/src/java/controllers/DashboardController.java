@@ -33,16 +33,12 @@ public class DashboardController extends HttpServlet {
             Bill bill = new Bill();
             bill.where("phone = " + phone);
             ArrayList<Bill> bills = bill.get();
-            
-            ExpenseRecord tf = new ExpenseRecord();
-            tf.where("phone = " + phone);
-            ArrayList<ExpenseRecord> dataTransfer = tf.get();
-            
+
             request.getSession().setAttribute("listbill", bills);
             request.getSession().setAttribute("list", saves);
             request.setAttribute("dataIncome", dataIncome);
             request.setAttribute("dataExpense", dataExpense);
-            request.setAttribute("dataTransfer", dataTransfer);
+            
             request.getRequestDispatcher("Pages/DashboardPage.jsp").forward(request, response);
         }
     }
