@@ -310,63 +310,6 @@
                         </a>
                     </div>
                 </div>
-
-                <div class="bg-white rounded-lg shadow-xs p-6 mb-8 hover:shadow-md transition-shadow duration-300">
-                    <%
-                        ArrayList<ExpenseRecord> transfers = (ArrayList<ExpenseRecord>) request.getAttribute("dataTransfer");
-                    %>
-                    <h2 class="text-xl font-semibold text-gray-700 mb-4">Recent Transfers</h2>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Date</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        From</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        To</th>
-                                    <th
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <%
-                                    int j = 0;
-                                    for (ExpenseRecord transfer : transfers) {
-                                        User find = user.find(String.valueOf(transfer.getReceiverPhone()));
-                                        if (transfers != null) {
-                                            if (j == 3) {
-                                                break;
-                                            }
-                                %>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= transfer.getDate()%></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Self</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"><%= find.getName()%></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-green-600">Rp. <%= String.format("%,.0f", (double) transfer.getAmount())%>
-                                    </td>
-                                </tr>
-                                <%
-                                    j++;
-                                } else {
-                                %>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-700">You have no transfers.</span>
-                            </div>
-                            <%}%>
-                            <%}%>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-4 text-right">
-                        <a href="Expense" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">View All Transfers</a>
-                    </div>
-                </div>
             </main>
         </div>
         <script>
