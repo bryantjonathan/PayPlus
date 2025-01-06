@@ -163,6 +163,7 @@
             <div id="incomeCards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <%
                     ArrayList<IncomeRecord> incomes = (ArrayList<IncomeRecord>) request.getAttribute("IncomeList");
+                    
                     if (incomes != null && !incomes.isEmpty()) {
                         User user = new User();
                         for (IncomeRecord income : incomes) {
@@ -205,11 +206,12 @@
         </main>
     </body>
     <%
+        ArrayList<IncomeRecord> incomesDistribution = (ArrayList<IncomeRecord>) request.getAttribute("IncomeDistribution");
         int normalIncome = 0;
         int giftIncome = 0;
         int topupIncome = 0;
-        if (incomes != null) {
-            for (IncomeRecord income : incomes) {
+        if (incomesDistribution != null) {
+            for (IncomeRecord income : incomesDistribution) {
                 if ("normal".equalsIgnoreCase(income.getType())) {
                     normalIncome += income.getAmount();
                 } else if ("gift".equalsIgnoreCase(income.getType())) {

@@ -28,14 +28,19 @@ public class IncomeController extends HttpServlet {
                     + "SUM(CASE WHEN type = 'topup' THEN amount ELSE 0 END) "
                     + "FROM income WHERE phone =" + phone);
             request.setAttribute("dataIncome", dataIncome);
-
+            
             String filter = request.getParameter("filter");
             IncomeRecord conds = new IncomeRecord();
+            
+            conds.where("phone = " + phone);
+            ArrayList<IncomeRecord> incomeDistribution = conds.get();
+            request.setAttribute("IncomeDistribution", incomeDistribution);
+                
             if (request.getParameterMap().isEmpty()) {
                 conds.where("phone = " + phone);
                 ArrayList<IncomeRecord> incomeList = conds.get();
                 request.setAttribute("IncomeList", incomeList);
-            } else if ("normal".equals(filter)) { 
+            } else if ("normal".equals(filter)) {
                 conds.where("phone = " + phone + " AND type = 'normal'");
                 ArrayList<IncomeRecord> incomeList = conds.get();
                 request.setAttribute("IncomeList", incomeList);
