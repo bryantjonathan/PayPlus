@@ -62,9 +62,9 @@
                                 <div>
                                     <h3 class="text-lg font-medium text-gray-900">Profile Picture</h3>
                                     <p class="text-xs font-medium <%= 
-                                        user.getRole().equalsIgnoreCase("gold") ? "text-yellow-500" :
-                                        user.getRole().equalsIgnoreCase("silver") ? "text-gray-500" :
-                                        user.getRole().equalsIgnoreCase("bronze") ? "text-orange-500" :
+                                        user.getRole().equals("gold") ? "text-yellow-500" :
+                                        user.getRole().equals("silver") ? "text-gray-500" :
+                                        user.getRole().equals("bronze") ? "text-orange-500" :
                                         "text-black" %>">
                                         Member <%= user.getRole() %>
                                     </p>
@@ -124,42 +124,6 @@
             </div>
         </main>
     </div>
-
-    <div id="successMessage" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full opacity-0 transition-all duration-300">
-        <div class="flex items-center space-x-2">
-            <i data-feather="check-circle" class="w-5 h-5"></i>
-            <span>Settings updated successfully!</span>
-        </div>
-    </div>
-
-    <script>
-        feather.replace();
-
-        const settingsForm = document.getElementById('settingsForm');
-        const successMessage = document.getElementById('successMessage');
-
-        settingsForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (newPassword && newPassword !== confirmPassword) {
-                alert("New passwords don't match!");
-                return;
-            }
-
-            const formData = new FormData(settingsForm);
-            const data = Object.fromEntries(formData);
-            console.log('Settings update:', data);
-
-            successMessage.classList.remove('translate-y-full', 'opacity-0');
-            
-            setTimeout(() => {
-                successMessage.classList.add('translate-y-full', 'opacity-0');
-            }, 3000);
-        });
-    </script>
 </body>
 </html>
 

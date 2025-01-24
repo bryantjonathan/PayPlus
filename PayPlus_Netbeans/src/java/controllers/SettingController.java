@@ -19,8 +19,11 @@ public class SettingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        if (request.getSession().getAttribute("currPhone") == null) {
+            response.sendRedirect("User?menu=login");
+        } else {
         request.getRequestDispatcher("Pages/Settings.jsp").forward(request, response);
+        }
     }
 
     @Override

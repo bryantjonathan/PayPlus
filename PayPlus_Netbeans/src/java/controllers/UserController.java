@@ -49,7 +49,7 @@ public class UserController extends HttpServlet {
             String role;
             if (sementara > 10000000) {
                 role = "gold";
-            } else if (sementara < 10000000 && sementara > 5000000) {
+            } else if (sementara <= 10000000 && sementara > 5000000) {
                 role = "silver";
             } else {
                 role = "bronze";

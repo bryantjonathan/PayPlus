@@ -2,6 +2,27 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/extendbill/Bill.js</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/index.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/Settings.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/DashboardPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/DashboardController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/User.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/UserController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/IncomeController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/TransferController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/Model.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/BillPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/SignUpPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/SettingController.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/IncomePage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/transferPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/ExpensePage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/web/Pages/LoginPage.jsp</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/controllers/SavingsServlet.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/IncomeRecord.java</file>
+            <file>file:/D:/My%20Remote/Git%20Hub/PayPlus/PayPlus_Netbeans/src/java/models/BronzeUser.java</file>
+        </group>
     </open-files>
 </project-private>

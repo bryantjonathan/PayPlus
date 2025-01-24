@@ -68,9 +68,9 @@
                                     <div class="px-4 py-2 border-b">
                                         <p class="text-sm font-medium text-gray-900"><%=user.getName()%></p>
                                         <p class="text-xs text-gray-500">Account #: <%=user.getPhone()%></p>
-                                        <p class="text-xs font-medium <%=user.getRole().equalsIgnoreCase("gold") ? "text-yellow-500"
-                                                : user.getRole().equalsIgnoreCase("silver") ? "text-gray-500"
-                                                : user.getRole().equalsIgnoreCase("bronze") ? "text-orange-500"
+                                        <p class="text-xs font-medium <%=user.getRole().equals("gold") ? "text-yellow-500"
+                                                : user.getRole().equals("silver") ? "text-gray-500"
+                                                : user.getRole().equals("bronze") ? "text-orange-500"
                                                 : "text-black"%>">
                                             Member <%= user.getRole()%>
                                         </p>

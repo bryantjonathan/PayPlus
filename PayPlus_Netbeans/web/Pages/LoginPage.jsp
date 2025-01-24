@@ -16,7 +16,7 @@
 <body class="bg-gray-50 font-sans">
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-            <a href="">    
+            <a href="../PayPlus">    
                 <img id = "logo" src="Images\logo.png" class="mx-auto">
             </a>
             <h3 class="text-2xl font-bold text-indigo-600 text-center mb-6">Welcome Back!</h3>
