@@ -46,9 +46,9 @@ PayPlus adalah aplikasi web dompet digital (**e-wallet**) yang dirancang untuk m
 
 ## 🛠️ Teknologi
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Java
-- **Database**: MongoDB
+- **Frontend**: JSP, CSS
+- **Backend**: Java, JavaScript
+- **Database**: MySQL
 
 ---
 
